@@ -7,6 +7,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool _isPasswordShow = true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -58,7 +60,7 @@ class _LoginState extends State<Login> {
                   child: Padding(
                     padding: EdgeInsets.only(left: 50.0, right: 50.0),
                     child: TextField(
-                      obscureText: true,
+                      obscureText: _isPasswordShow,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         enabledBorder: OutlineInputBorder(
@@ -70,9 +72,17 @@ class _LoginState extends State<Login> {
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
                         ),
                         prefixIcon: Icon(Icons.vpn_key),
-                        suffixIcon: IconButton(
-                          icon: Icon(Icons.remove_red_eye),
-                          onPressed: () {},
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _isPasswordShow = !_isPasswordShow;
+                            });
+                          },
+                          child: Icon(
+                            _isPasswordShow
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
                         ),
                         hintText: "Password",
                         filled: true,
@@ -110,20 +120,30 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 SizedBox(height: 15.0),
-                Text(
-                  "Forgot Password ?",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    color: Colors.black54,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/forgotPass');
+                  },
+                  child: Text(
+                    "Forgot Password ?",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                      color: Colors.black54,
+                    ),
                   ),
                 ),
                 SizedBox(height: 10.0),
-                Text(
-                  "Sign Up",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w200,
-                    color: Colors.black54,
-                    fontStyle: FontStyle.italic,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/sighUp');
+                  },
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w200,
+                      color: Colors.black54,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
                 ),
               ],
