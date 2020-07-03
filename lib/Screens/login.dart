@@ -7,21 +7,21 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool _isPasswordShow = true;
+  bool _isPasswordObs = true;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Awanhala Login'),
+          title: Text('Cantima Login'),
         ),
         body: SingleChildScrollView(
           child: Center(
             child: Column(
               children: <Widget>[
                 Container(
-                  width: 160.0,
+                  width: 150.0,
                   child: Padding(
                     padding: EdgeInsets.only(top: 30.0),
                     child: Material(
@@ -60,7 +60,7 @@ class _LoginState extends State<Login> {
                   child: Padding(
                     padding: EdgeInsets.only(left: 50.0, right: 50.0),
                     child: TextField(
-                      obscureText: _isPasswordShow,
+                      obscureText: _isPasswordObs,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         enabledBorder: OutlineInputBorder(
@@ -75,11 +75,11 @@ class _LoginState extends State<Login> {
                         suffixIcon: GestureDetector(
                           onTap: () {
                             setState(() {
-                              _isPasswordShow = !_isPasswordShow;
+                              _isPasswordObs = !_isPasswordObs;
                             });
                           },
                           child: Icon(
-                            _isPasswordShow
+                            _isPasswordObs
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                           ),
@@ -135,6 +135,7 @@ class _LoginState extends State<Login> {
                 SizedBox(height: 10.0),
                 GestureDetector(
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.pushNamed(context, '/sighUp');
                   },
                   child: Text(
