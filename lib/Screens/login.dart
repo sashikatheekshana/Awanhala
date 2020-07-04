@@ -14,7 +14,7 @@ class _LoginState extends State<Login> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Awanhala Login'),
+          title: Text('Kantima Login'),
         ),
         body: SingleChildScrollView(
           child: Center(
