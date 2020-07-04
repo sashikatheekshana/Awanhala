@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -39,8 +41,17 @@ class _CanteenSelectState extends State<CanteenSelect> {
                     SizedBox(
                       width: 30,
                     ),
-                    Text(
-                      "UCSC Canteen",
+                    RaisedButton(
+                      onPressed: null,
+                      disabledColor: Colors.white70,
+                      child: Text(
+                        "UCSC Canteen",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black87,
+                          fontStyle: FontStyle.normal,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -58,8 +69,17 @@ class _CanteenSelectState extends State<CanteenSelect> {
                     SizedBox(
                       width: 30,
                     ),
-                    Text(
-                      "ART Canteen",
+                    RaisedButton(
+                      onPressed: null,
+                      disabledColor: Colors.white70,
+                      child: Text(
+                        "ART Canteen",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black87,
+                          fontStyle: FontStyle.normal,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -77,8 +97,17 @@ class _CanteenSelectState extends State<CanteenSelect> {
                     SizedBox(
                       width: 30,
                     ),
-                    Text(
-                      "LAW Canteen",
+                    RaisedButton(
+                      onPressed: null,
+                      disabledColor: Colors.white70,
+                      child: Text(
+                        "LAW Canteen",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black87,
+                          fontStyle: FontStyle.normal,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -96,8 +125,17 @@ class _CanteenSelectState extends State<CanteenSelect> {
                     SizedBox(
                       width: 30,
                     ),
-                    Text(
-                      "SCIENCE Canteen",
+                    RaisedButton(
+                      onPressed: null,
+                      disabledColor: Colors.white70,
+                      child: Text(
+                        "SCIENCE Canteen",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black87,
+                          fontStyle: FontStyle.normal,
+                        ),
+                      ),
                     ),
                   ],
                 ),
