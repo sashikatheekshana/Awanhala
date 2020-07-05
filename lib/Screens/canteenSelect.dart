@@ -41,9 +41,14 @@ class _CanteenSelectState extends State<CanteenSelect> {
                     SizedBox(
                       width: 30,
                     ),
+                    Container(
+                      width: 2,
+                      height: 35,
+                      color: Colors.black,
+                    ),
                     RaisedButton(
                       onPressed: null,
-                      disabledColor: Colors.white70,
+                      disabledColor: Colors.transparent,
                       child: Text(
                         "UCSC Canteen",
                         style: TextStyle(
@@ -69,9 +74,14 @@ class _CanteenSelectState extends State<CanteenSelect> {
                     SizedBox(
                       width: 30,
                     ),
+                    Container(
+                      width: 2,
+                      height: 35,
+                      color: Colors.black,
+                    ),
                     RaisedButton(
                       onPressed: null,
-                      disabledColor: Colors.white70,
+                      disabledColor: Colors.transparent,
                       child: Text(
                         "ART Canteen",
                         style: TextStyle(
@@ -97,9 +107,14 @@ class _CanteenSelectState extends State<CanteenSelect> {
                     SizedBox(
                       width: 30,
                     ),
+                    Container(
+                      width: 2,
+                      height: 35,
+                      color: Colors.black,
+                    ),
                     RaisedButton(
                       onPressed: null,
-                      disabledColor: Colors.white70,
+                      disabledColor: Colors.transparent,
                       child: Text(
                         "LAW Canteen",
                         style: TextStyle(
@@ -125,9 +140,14 @@ class _CanteenSelectState extends State<CanteenSelect> {
                     SizedBox(
                       width: 30,
                     ),
+                    Container(
+                      width: 2,
+                      height: 35,
+                      color: Colors.black,
+                    ),
                     RaisedButton(
                       onPressed: null,
-                      disabledColor: Colors.white70,
+                      disabledColor: Colors.transparent,
                       child: Text(
                         "SCIENCE Canteen",
                         style: TextStyle(
