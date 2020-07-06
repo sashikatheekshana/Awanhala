@@ -14,17 +14,18 @@ class _CanteenSelectState extends State<CanteenSelect> {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            leading: IconButton(
-              icon: Icon(
-                Icons.list,
-                size: 40,
-              ),
-              onPressed: (null),
-              //should add selection drop down
-            ),
+            // leading: IconButton(
+            //   icon: Icon(
+            //     Icons.list,
+            //     size: 40,
+            //   ),
+            //   onPressed: (null),
+            //   //should add selection drop down
+            // ),
             title: Text("Select the Canteen"),
             backgroundColor: Colors.red,
           ),
+          drawer: Drawer(),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
