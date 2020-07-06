@@ -48,7 +48,7 @@ class _CanteenSelectState extends State<CanteenSelect> {
                       color: Colors.black,
                     ),
                     RaisedButton(
-                      onPressed: null,
+                      onPressed: () {},
                       disabledColor: Colors.transparent,
                       child: Text(
                         "UCSC Canteen",
