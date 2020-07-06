@@ -12,6 +12,7 @@ import 'package:awanahala/Screens/login.dart';
 import 'package:awanahala/Screens/signUp.dart';
 import 'package:awanahala/Screens/forgotPass.dart';
 import 'package:awanahala/Screens/canteenSelect.dart';
+import 'package:awanahala/Screens/ratethefood.dart';
 
 class Awanhala extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class Awanhala extends StatelessWidget {
     return GetMaterialApp(
         title: 'Awanahala',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/login',
+        initialRoute: '/rateFood',
         routes: {
           '/login': (context) => Login(),
           '/sighUp': (context) => SignUp(),
@@ -28,6 +29,7 @@ class Awanhala extends StatelessWidget {
           '/finalReg': (context) => FinalReg(),
           '/home': (context) => Home(),
           '/canteenSelect': (context) => CanteenSelect(),
+          '/rateFood': (context) => RateFood(),
         });
   }
 }
