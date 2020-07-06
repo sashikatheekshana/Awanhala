@@ -15,6 +15,7 @@ class _LoginState extends State<Login> {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Cantima Login'),
+
         ),
         body: SingleChildScrollView(
           child: Center(
