@@ -27,6 +27,7 @@ class _RateFoodState extends State<RateFood> {
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             SizedBox(
               height: 80,
@@ -168,7 +169,7 @@ class _RateFoodState extends State<RateFood> {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: 80,
+                  width: 40,
                 ),
                 Text("Add a Complaint")
               ],
@@ -176,8 +177,52 @@ class _RateFoodState extends State<RateFood> {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: 80,
+                  width: 40,
                 ),
+                Expanded(
+                  child: TextField(
+                    minLines: 5,
+                    maxLines: 10,
+                    decoration: InputDecoration(
+                      hintText: "Write your Complaint here",
+                      filled: true,
+                      fillColor: Colors.transparent,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 60,
+                ),
+                Expanded(
+                  child: RaisedButton(
+                    child: Text("Add Rating"),
+                    onPressed: () {
+                      print("Add Rating Button Click");
+                    },
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    color: Colors.grey,
+                    textColor: Colors.black,
+                  ),
+                ),
+                SizedBox(
+                  width: 60,
+                )
               ],
             ),
           ],
