@@ -22,19 +22,41 @@ class _LoginState extends State<Login> {
       print('the form is valid');
       print(email);
       print(password);
-      // var url = 'http://3.94.213.153:3000/api/user/login';
-      // var response = await http
-      //     .post(url, body: {"email": "dulaj@gmail.com", "password": password});
+      final body = jsonEncode({"email": email, "password": password});
 
-      // // var jsonResponse = json.decode(response.body);
-      // // print(jsonResponse);
+      var url = 'http://3.94.213.153:3000/api/user/login';
+      var response = await http.post(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: body);
 
-      // if (response.statusCode == 200) {
-      //   print('user login successfull');
-      // } else {
-      //   print('login error');
-      // }
-      Get.toNamed("/canteenSelect");
+      // var jsonResponse = json.decode(response.body);
+      // print(jsonResponse);
+      print(response.body);
+
+      if (response.statusCode == 200) {
+        print('user login successfull');
+
+        Get.snackbar("Success", response.body,
+            icon: Icon(
+              Icons.done,
+              color: Colors.green,
+            ));
+
+        // Future.delayed(Duration(seconds: 10));
+        Get.toNamed("/canteenSelect");
+      } else {
+        print('login error');
+        Get.snackbar(
+          "Login error",
+          response.body,
+          icon: Icon(
+            Icons.error,
+            color: Colors.red,
+          ),
+        );
+      }
     } else {
       Get.snackbar(
         "Input error",
