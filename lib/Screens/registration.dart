@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 
-class SignUp extends StatefulWidget {
+class Registration extends StatefulWidget {
   @override
-  _SignUpState createState() => _SignUpState();
+  _RegistrationState createState() => _RegistrationState();
 }
 
-class _SignUpState extends State<SignUp> {
-  bool _isPasswordObs = true;
-  bool _isReEnterPasswordObs = true;
+class _RegistrationState extends State<Registration> {
   final _formKey = GlobalKey<FormState>();
-  String _pass1;
+  RegExp regex1 = new RegExp(r'^([0-9]{9}[x|X|v|V])$');
+  RegExp regex2 = new RegExp(r'^([0-9]{12})$');
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Cantima Sign Up"),
+          title: Text("Registraion"),
         ),
         body: Container(
           child: SingleChildScrollView(
@@ -43,7 +42,7 @@ class _SignUpState extends State<SignUp> {
                         child: TextFormField(
                           validator: (value) {
                             if (value.isEmpty) {
-                              return 'Username is required';
+                              return 'Name is required';
                             } else {
                               return null;
                             }
@@ -61,7 +60,7 @@ class _SignUpState extends State<SignUp> {
                                   BorderRadius.all(Radius.circular(30.0)),
                             ),
                             prefixIcon: Icon(Icons.person),
-                            hintText: "Username",
+                            hintText: "Name",
                             filled: true,
                             fillColor: Colors.grey[200],
                             border: InputBorder.none,
@@ -74,17 +73,17 @@ class _SignUpState extends State<SignUp> {
                       child: Padding(
                         padding: EdgeInsets.only(left: 50.0, right: 50.0),
                         child: TextFormField(
+                          keyboardType: TextInputType.phone,
                           validator: (value) {
                             if (value.isEmpty) {
-                              return 'Password is required';
-                            } else if (value.length <= 6) {
-                              return 'Password should be more than 6 char';
+                              return 'Mobile number is required';
+                            } else if (value.length != 10 ||
+                                value.substring(0, 2) != "07") {
+                              return 'Enter valid phone number';
                             } else {
-                              _pass1 = value;
                               return null;
                             }
                           },
-                          obscureText: _isPasswordObs,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(10.0),
                             enabledBorder: OutlineInputBorder(
@@ -98,19 +97,7 @@ class _SignUpState extends State<SignUp> {
                                   BorderRadius.all(Radius.circular(30.0)),
                             ),
                             prefixIcon: Icon(Icons.vpn_key),
-                            suffixIcon: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  _isPasswordObs = !_isPasswordObs;
-                                });
-                              },
-                              child: Icon(
-                                _isPasswordObs
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                              ),
-                            ),
-                            hintText: "Password",
+                            hintText: "Phone Number",
                             filled: true,
                             fillColor: Colors.grey[200],
                             border: InputBorder.none,
@@ -123,18 +110,7 @@ class _SignUpState extends State<SignUp> {
                       child: Padding(
                         padding: EdgeInsets.only(left: 50.0, right: 50.0),
                         child: TextFormField(
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Password is required';
-                            } else if (value.length <= 6) {
-                              return 'Password should be more than 6 char';
-                            } else if (value != _pass1) {
-                              return 'Passsword didn`t match';
-                            } else {
-                              return null;
-                            }
-                          },
-                          obscureText: _isReEnterPasswordObs,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(10.0),
                             enabledBorder: OutlineInputBorder(
@@ -148,20 +124,43 @@ class _SignUpState extends State<SignUp> {
                                   BorderRadius.all(Radius.circular(30.0)),
                             ),
                             prefixIcon: Icon(Icons.vpn_key),
-                            suffixIcon: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  _isReEnterPasswordObs =
-                                      !_isReEnterPasswordObs;
-                                });
-                              },
-                              child: Icon(
-                                _isReEnterPasswordObs
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                              ),
+                            hintText: "Email",
+                            filled: true,
+                            fillColor: Colors.grey[200],
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 50.0, right: 50.0),
+                        child: TextFormField(
+                          validator: (value) {
+                            if ((value.length == 10 &&
+                                    regex1.hasMatch(value)) ||
+                                (value.length == 12 &&
+                                    regex2.hasMatch(value))) {
+                              return null;
+                            } else {
+                              return 'Enter valid NID number';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(10.0),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.0)),
                             ),
-                            hintText: "Re Enter Password",
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.0)),
+                            ),
+                            prefixIcon: Icon(Icons.vpn_key),
+                            hintText: "NIC",
                             filled: true,
                             fillColor: Colors.grey[200],
                             border: InputBorder.none,
@@ -194,7 +193,7 @@ class _SignUpState extends State<SignUp> {
                           color: Colors.green[300],
                           onPressed: () {
                             if (_formKey.currentState.validate()) {
-                              Navigator.pushNamed(context, '/registration');
+                              Navigator.pushNamed(context, '/finalReg');
                             }
                           },
                         ),
