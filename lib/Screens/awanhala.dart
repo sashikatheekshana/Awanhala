@@ -9,6 +9,7 @@ import 'registration.dart';
 import 'finalReg.dart';
 import 'home.dart';
 import 'addToCart.dart';
+import 'cart.dart';
 
 import 'package:awanahala/Screens/login.dart';
 import 'package:awanahala/Screens/signUp.dart';
@@ -22,7 +23,7 @@ class Awanhala extends StatelessWidget {
     return GetMaterialApp(
         title: 'Awanahala',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/addToCart',
+        initialRoute: '/cart',
         routes: {
           '/login': (context) => Login(),
           '/sighUp': (context) => SignUp(),
@@ -34,6 +35,7 @@ class Awanhala extends StatelessWidget {
           '/rateFood': (context) => RateFood(),
           '/foodItem': (context) => FoodItem(),
           '/addToCart': (context) => AddToCart(),
+          '/cart': (context) => Cart(),
         });
   }
 }
