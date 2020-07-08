@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:awanahala/shared/sizeConfig.dart';
 
 class RateFood extends StatefulWidget {
   @override
@@ -10,6 +11,10 @@ class RateFood extends StatefulWidget {
 class _RateFoodState extends State<RateFood> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    double blockHeight = SizeConfig.safeBlockVertical;
+    double blockWidth = SizeConfig.safeBlockHorizontal;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -30,11 +35,11 @@ class _RateFoodState extends State<RateFood> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             SizedBox(
-              height: 80,
+              height: blockHeight * 10,
             ),
             Padding(
               padding: EdgeInsets.only(
-                left: 40,
+                left: blockWidth * 15,
               ),
               child: Container(
                 child: Text(
@@ -47,12 +52,12 @@ class _RateFoodState extends State<RateFood> {
               ),
             ),
             SizedBox(
-              height: 40,
+              height: blockHeight * 3,
             ),
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: 80,
+                  width: blockWidth * 23,
                 ),
                 Expanded(
                   child: Text(
@@ -90,7 +95,7 @@ class _RateFoodState extends State<RateFood> {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: 80,
+                  width: blockWidth * 23,
                 ),
                 Expanded(
                   child: Text(
@@ -128,7 +133,7 @@ class _RateFoodState extends State<RateFood> {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: 80,
+                  width: blockWidth * 23,
                 ),
                 Expanded(
                   child: Text(
@@ -164,12 +169,12 @@ class _RateFoodState extends State<RateFood> {
               ],
             ),
             SizedBox(
-              height: 40,
+              height: blockHeight * 3,
             ),
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: 40,
+                  width: blockWidth * 23,
                 ),
                 Text("Add a Complaint")
               ],
@@ -177,7 +182,7 @@ class _RateFoodState extends State<RateFood> {
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: 40,
+                  width: blockWidth * 23,
                 ),
                 Expanded(
                   child: TextField(
@@ -197,17 +202,17 @@ class _RateFoodState extends State<RateFood> {
                   ),
                 ),
                 SizedBox(
-                  width: 10,
+                  width: blockWidth * 12,
                 ),
               ],
             ),
             SizedBox(
-              height: 20,
+              height: blockHeight * 2.5,
             ),
             Row(
               children: <Widget>[
                 SizedBox(
-                  width: 60,
+                  width: blockWidth * 23,
                 ),
                 Expanded(
                   child: RaisedButton(
@@ -215,13 +220,14 @@ class _RateFoodState extends State<RateFood> {
                     onPressed: () {
                       print("Add Rating Button Click");
                     },
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    padding: EdgeInsets.fromLTRB(blockWidth * 2,
+                        blockHeight * 1, blockWidth * 2, blockHeight * 1),
                     color: Colors.grey,
                     textColor: Colors.black,
                   ),
                 ),
                 SizedBox(
-                  width: 60,
+                  width: blockWidth * 12,
                 )
               ],
             ),
