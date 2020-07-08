@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:awanahala/shared/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -11,6 +12,9 @@ class CanteenSelect extends StatefulWidget {
 class _CanteenSelectState extends State<CanteenSelect> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    double blockHeight = SizeConfig.safeBlockVertical;
+    double blockWidth = SizeConfig.safeBlockHorizontal;
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
@@ -33,27 +37,27 @@ class _CanteenSelectState extends State<CanteenSelect> {
                 child: Row(
                   children: <Widget>[
                     SizedBox(
-                      width: 30,
+                      width: blockWidth * 10,
                     ),
                     CircleAvatar(
-                      radius: 45,
+                      radius: blockHeight * 6.4,
                       backgroundImage: AssetImage("images/ucsc.jpg"),
                     ),
                     SizedBox(
-                      width: 30,
+                      width: blockWidth * 8,
                     ),
                     Container(
-                      width: 2,
-                      height: 35,
+                      width: blockWidth * 0.5,
+                      height: blockHeight * 5.25,
                       color: Colors.black,
                     ),
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: null,
                       disabledColor: Colors.transparent,
                       child: Text(
                         "UCSC Canteen",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: blockHeight * 2.5,
                           color: Colors.black87,
                           fontStyle: FontStyle.normal,
                         ),
@@ -66,18 +70,18 @@ class _CanteenSelectState extends State<CanteenSelect> {
                 child: Row(
                   children: <Widget>[
                     SizedBox(
-                      width: 30,
+                      width: blockWidth * 10,
                     ),
                     CircleAvatar(
-                      radius: 45,
+                      radius: blockHeight * 6.4,
                       backgroundImage: AssetImage("images/art.jpg"),
                     ),
                     SizedBox(
-                      width: 30,
+                      width: blockWidth * 8,
                     ),
                     Container(
-                      width: 2,
-                      height: 35,
+                      width: blockWidth * 0.5,
+                      height: blockHeight * 5.25,
                       color: Colors.black,
                     ),
                     RaisedButton(
@@ -86,7 +90,7 @@ class _CanteenSelectState extends State<CanteenSelect> {
                       child: Text(
                         "ART Canteen",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: blockHeight * 2.5,
                           color: Colors.black87,
                           fontStyle: FontStyle.normal,
                         ),
@@ -99,18 +103,18 @@ class _CanteenSelectState extends State<CanteenSelect> {
                 child: Row(
                   children: <Widget>[
                     SizedBox(
-                      width: 30,
+                      width: blockWidth * 10,
                     ),
                     CircleAvatar(
-                      radius: 45,
+                      radius: blockHeight * 6.4,
                       backgroundImage: AssetImage("images/law.jpg"),
                     ),
                     SizedBox(
-                      width: 30,
+                      width: blockWidth * 8,
                     ),
                     Container(
-                      width: 2,
-                      height: 35,
+                      width: blockWidth * 0.5,
+                      height: blockHeight * 5.25,
                       color: Colors.black,
                     ),
                     RaisedButton(
@@ -119,7 +123,7 @@ class _CanteenSelectState extends State<CanteenSelect> {
                       child: Text(
                         "LAW Canteen",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: blockHeight * 2.5,
                           color: Colors.black87,
                           fontStyle: FontStyle.normal,
                         ),
@@ -132,18 +136,18 @@ class _CanteenSelectState extends State<CanteenSelect> {
                 child: Row(
                   children: <Widget>[
                     SizedBox(
-                      width: 30,
+                      width: blockWidth * 10,
                     ),
                     CircleAvatar(
-                      radius: 45,
+                      radius: blockHeight * 6.4,
                       backgroundImage: AssetImage("images/science.jpg"),
                     ),
                     SizedBox(
-                      width: 30,
+                      width: blockWidth * 8,
                     ),
                     Container(
-                      width: 2,
-                      height: 35,
+                      width: blockWidth * 0.5,
+                      height: blockHeight * 5.25,
                       color: Colors.black,
                     ),
                     RaisedButton(
@@ -152,7 +156,7 @@ class _CanteenSelectState extends State<CanteenSelect> {
                       child: Text(
                         "SCIENCE Canteen",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: blockHeight * 2.5,
                           color: Colors.black87,
                           fontStyle: FontStyle.normal,
                         ),
