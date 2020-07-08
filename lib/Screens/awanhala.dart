@@ -1,3 +1,4 @@
+import 'package:awanahala/Screens/foodItem.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +21,7 @@ class Awanhala extends StatelessWidget {
     return GetMaterialApp(
         title: 'Awanahala',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/canteenSelect',
+        initialRoute: '/foodItem',
         routes: {
           '/login': (context) => Login(),
           '/sighUp': (context) => SignUp(),
@@ -30,6 +31,7 @@ class Awanhala extends StatelessWidget {
           '/home': (context) => Home(),
           '/canteenSelect': (context) => CanteenSelect(),
           '/rateFood': (context) => RateFood(),
+          '/foodItem': (context) => FoodItem(),
         });
   }
 }
