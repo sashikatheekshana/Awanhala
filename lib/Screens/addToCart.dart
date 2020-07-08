@@ -7,13 +7,15 @@ class AddToCart extends StatefulWidget {
 }
 
 class _AddToCartState extends State<AddToCart> {
+  double unitPrice = 20.0;
+  double totalPrice = 20.0;
+  int itemCount = 1;
+  int available = 11;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     double blockHeight = SizeConfig.safeBlockVertical;
     double blockWidth = SizeConfig.safeBlockHorizontal;
-    int unitPrice = 20;
-    int totalPrice = 60;
 
     return SafeArea(
       child: Scaffold(
@@ -77,7 +79,7 @@ class _AddToCartState extends State<AddToCart> {
                                       ),
                                     ),
                                     TextSpan(
-                                      text: unitPrice.toString() + ".00",
+                                      text: unitPrice.toString(),
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 16.0,
@@ -101,7 +103,7 @@ class _AddToCartState extends State<AddToCart> {
                                   ),
                                 ),
                                 TextSpan(
-                                  text: totalPrice.toString() + ".00",
+                                  text: '$totalPrice',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 35.0,
@@ -128,7 +130,15 @@ class _AddToCartState extends State<AddToCart> {
                           Padding(
                             padding: EdgeInsets.only(bottom: blockHeight * 0.5),
                             child: MaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  if (itemCount > 1) {
+                                    itemCount = itemCount - 1;
+                                    available++;
+                                    totalPrice = unitPrice * itemCount;
+                                  }
+                                });
+                              },
                               color: Colors.green[300],
                               textColor: Colors.white,
                               child: Icon(
@@ -139,12 +149,13 @@ class _AddToCartState extends State<AddToCart> {
                               shape: CircleBorder(),
                             ),
                           ),
+                          // ItemCount(),
                           Container(
                             height: 70.0,
                             width: 70.0,
                             child: Center(
                               child: Text(
-                                "3",
+                                '$itemCount',
                                 style: TextStyle(
                                   color: Colors.green[400],
                                   fontSize: 40.0,
@@ -164,7 +175,15 @@ class _AddToCartState extends State<AddToCart> {
                           Padding(
                             padding: EdgeInsets.only(bottom: blockHeight * 0.5),
                             child: MaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (available >= 1) {
+                                  setState(() {
+                                    itemCount = itemCount + 1;
+                                    available--;
+                                    totalPrice = unitPrice * itemCount;
+                                  });
+                                }
+                              },
                               color: Colors.green[300],
                               textColor: Colors.white,
                               child: Icon(
@@ -177,6 +196,8 @@ class _AddToCartState extends State<AddToCart> {
                           )
                         ],
                       ),
+
+                      // ItemCount(count: itemCount), // Inc or Dec itemCount
                     ),
                   ),
                   SizedBox(height: blockHeight * 3),
@@ -189,14 +210,14 @@ class _AddToCartState extends State<AddToCart> {
                           Row(
                             children: <Widget>[
                               Text(
-                                "14  ",
+                                "$available",
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
-                                "More",
+                                "More available",
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w300,
@@ -273,3 +294,120 @@ class _AddToCartState extends State<AddToCart> {
     );
   }
 }
+
+// class ItemCount extends StatefulWidget {
+//   int count;
+//   ItemCount({this.count});
+//   @override
+//   _ItemCountState createState() => _ItemCountState();
+// }
+
+// class _ItemCountState extends State<ItemCount> {
+//   @override
+//   Widget build(BuildContext context) {
+//     SizeConfig().init(context);
+//     double blockHeight = SizeConfig.safeBlockVertical;
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//       children: <Widget>[
+//         Padding(
+//           padding: EdgeInsets.only(bottom: blockHeight * 0.5),
+//           child: MaterialButton(
+//             onPressed: () {
+//               setState(() {
+//                 if (widget.count > 1) {
+//                   widget.count--;
+//                 }
+//               });
+//             },
+//             color: Colors.green[300],
+//             textColor: Colors.white,
+//             child: Icon(
+//               Icons.remove,
+//               size: 15,
+//             ),
+//             padding: EdgeInsets.all(blockHeight * 2.5),
+//             shape: CircleBorder(),
+//           ),
+//         ),
+//         // ItemCount(),
+//         Container(
+//           height: 70.0,
+//           width: 70.0,
+//           child: Center(
+//             child: Text(
+//               widget.count.toString(),
+//               style: TextStyle(
+//                 color: Colors.green[400],
+//                 fontSize: 40.0,
+//                 fontWeight: FontWeight.w300,
+//               ),
+//             ),
+//           ),
+//           decoration: BoxDecoration(
+//             color: Colors.grey[200],
+//             border: Border.all(
+//               color: Colors.transparent,
+//               width: 1,
+//             ),
+//             borderRadius: BorderRadius.circular(50),
+//           ),
+//         ),
+//         Padding(
+//           padding: EdgeInsets.only(bottom: blockHeight * 0.5),
+//           child: MaterialButton(
+//             onPressed: () {
+//               setState(() {
+//                 widget.count++;
+//               });
+//             },
+//             color: Colors.green[300],
+//             textColor: Colors.white,
+//             child: Icon(
+//               Icons.add,
+//               size: 15,
+//             ),
+//             padding: EdgeInsets.all(blockHeight * 2.5),
+//             shape: CircleBorder(),
+//           ),
+//         )
+//       ],
+//     );
+//   }
+// }
+
+// class CalculateTotal extends StatefulWidget {
+//   CalculateTotal({this.item, this.unitPrice});
+//   int item;
+//   double unitPrice;
+//   @override
+//   _CalculateTotalState createState() => _CalculateTotalState();
+// }
+
+// class _CalculateTotalState extends State<CalculateTotal> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return RichText(
+//       text: TextSpan(
+//         children: <TextSpan>[
+//           TextSpan(
+//             text: 'Rs. ',
+//             style: TextStyle(
+//               color: Colors.black,
+//               fontSize: 35.0,
+//               fontWeight: FontWeight.w200,
+//             ),
+//           ),
+//           TextSpan(
+//             text: ((widget.item) * (widget.unitPrice)).toString(),
+//             style: TextStyle(
+//               color: Colors.black,
+//               fontSize: 35.0,
+//               fontWeight: FontWeight.w400,
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
