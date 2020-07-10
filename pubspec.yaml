@@ -58,7 +58,7 @@ flutter:
     - images/foods/tea.jpg
     - images/foods/wade.jpg
     - images/foods/chickenRoll.jpg
-    
+    - images/qrCode.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
