@@ -24,6 +24,39 @@ class FoodItem extends StatelessWidget {
           ),
           backgroundColor: Colors.red,
         ),
+        body: Column(
+          children: <Widget>[
+            Container(
+              color: Colors.yellowAccent,
+              height: blockHeight * 20,
+              child: Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: blockWidth * 5,
+                  ),
+                  CircleAvatar(
+                    radius: blockHeight * 8,
+                    backgroundImage: AssetImage("images/ucsc.jpg"),
+                  ),
+                  SizedBox(
+                    width: blockWidth * 8,
+                  ),
+                  Container(
+                    child: Text(
+                      "UCSC Canteen",
+                      style: TextStyle(
+                        fontSize: blockHeight * 2.5,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
