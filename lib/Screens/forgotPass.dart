@@ -7,12 +7,12 @@ class ForgotPass extends StatefulWidget {
 }
 
 class _ForgotPassState extends State<ForgotPass> {
-  // List<String> currentPin = ["", "", "", ""];
-  // TextEditingController firstPinController = TextEditingController();
-  // TextEditingController secondPinController = TextEditingController();
-  // TextEditingController thirdPinController = TextEditingController();
-  // TextEditingController fourthPinController = TextEditingController();
-  // int pinIndex = 0;
+  List<String> currentPin = ["", "", "", ""];
+  TextEditingController firstPinController = TextEditingController();
+  TextEditingController secondPinController = TextEditingController();
+  TextEditingController thirdPinController = TextEditingController();
+  TextEditingController fourthPinController = TextEditingController();
+  int pinIndex = 0;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -73,7 +73,7 @@ class _ForgotPassState extends State<ForgotPass> {
                       SizedBox(height: blockHeight * 2.5),
                       Container(
                         height: blockHeight * 8,
-                        // child: otpPinRow(),
+                        child: otpPinRow(),
                       ),
                       SizedBox(height: blockHeight * 3),
                       Container(
@@ -172,17 +172,17 @@ class _ForgotPassState extends State<ForgotPass> {
                   keyboardNumber(
                       number: 1,
                       onKeyPressed: () {
-                        // numberSetup("1");
+                        numberSetup("1");
                       }),
                   keyboardNumber(
                       number: 2,
                       onKeyPressed: () {
-                        // numberSetup("2");
+                        numberSetup("2");
                       }),
                   keyboardNumber(
                       number: 3,
                       onKeyPressed: () {
-                        // numberSetup("3");
+                        numberSetup("3");
                       }),
                 ],
               ),
@@ -192,17 +192,17 @@ class _ForgotPassState extends State<ForgotPass> {
                   keyboardNumber(
                       number: 4,
                       onKeyPressed: () {
-                        // numberSetup("4");
+                        numberSetup("4");
                       }),
                   keyboardNumber(
                       number: 5,
                       onKeyPressed: () {
-                        // numberSetup("5");
+                        numberSetup("5");
                       }),
                   keyboardNumber(
                       number: 6,
                       onKeyPressed: () {
-                        // numberSetup("6");
+                        numberSetup("6");
                       }),
                 ],
               ),
@@ -212,17 +212,17 @@ class _ForgotPassState extends State<ForgotPass> {
                   keyboardNumber(
                       number: 7,
                       onKeyPressed: () {
-                        // numberSetup("7");
+                        numberSetup("7");
                       }),
                   keyboardNumber(
                       number: 8,
                       onKeyPressed: () {
-                        // numberSetup("8");
+                        numberSetup("8");
                       }),
                   keyboardNumber(
                       number: 9,
                       onKeyPressed: () {
-                        // numberSetup("9");
+                        numberSetup("9");
                       }),
                 ],
               ),
@@ -236,7 +236,7 @@ class _ForgotPassState extends State<ForgotPass> {
                   keyboardNumber(
                       number: 0,
                       onKeyPressed: () {
-                        // numberSetup("0");
+                        numberSetup("0");
                       }),
                   Container(
                     height: blockHeight * 5,
@@ -250,7 +250,7 @@ class _ForgotPassState extends State<ForgotPass> {
                       splashColor: Colors.green[100],
                       padding: EdgeInsets.all(5.0),
                       onPressed: () {
-                        // clearPin();
+                        clearPin();
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0),
@@ -272,66 +272,66 @@ class _ForgotPassState extends State<ForgotPass> {
     );
   }
 
-  // numberSetup(String textNumber) {
-  //   if (pinIndex == 0) {
-  //     pinIndex = 1;
-  //   } else if (pinIndex < 4) {
-  //     pinIndex++;
-  //   }
-  //   setPin(pinIndex, textNumber);
-  //   currentPin[pinIndex - 1] = textNumber;
-  //   String strPin = "";
-  //   currentPin.forEach((element) {
-  //     strPin += element;
-  //   });
-  //   if (pinIndex == 4) {
-  //     print(strPin);
-  //   }
-  // }
+  numberSetup(String textNumber) {
+    if (pinIndex == 0) {
+      pinIndex = 1;
+    } else if (pinIndex < 4) {
+      pinIndex++;
+    }
+    setPin(pinIndex, textNumber);
+    currentPin[pinIndex - 1] = textNumber;
+    String strPin = "";
+    currentPin.forEach((element) {
+      strPin += element;
+    });
+    if (pinIndex == 4) {
+      print(strPin);
+    }
+  }
 
-  // setPin(int n, String text) {
-  //   switch (n) {
-  //     case 1:
-  //       firstPinController.text = text;
-  //       break;
-  //     case 2:
-  //       secondPinController.text = text;
-  //       break;
-  //     case 3:
-  //       thirdPinController.text = text;
-  //       break;
-  //     case 4:
-  //       fourthPinController.text = text;
-  //       break;
-  //     default:
-  //   }
-  // }
+  setPin(int n, String text) {
+    switch (n) {
+      case 1:
+        firstPinController.text = text;
+        break;
+      case 2:
+        secondPinController.text = text;
+        break;
+      case 3:
+        thirdPinController.text = text;
+        break;
+      case 4:
+        fourthPinController.text = text;
+        break;
+      default:
+    }
+  }
 
-  // otpPinRow() {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //     children: <Widget>[
-  //       pinNumber(textEditingController: firstPinController),
-  //       pinNumber(textEditingController: secondPinController),
-  //       pinNumber(textEditingController: thirdPinController),
-  //       pinNumber(textEditingController: fourthPinController),
-  //     ],
-  //   );
-  // }
+  otpPinRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        pinNumber(textEditingController: firstPinController),
+        pinNumber(textEditingController: secondPinController),
+        pinNumber(textEditingController: thirdPinController),
+        pinNumber(textEditingController: fourthPinController),
+      ],
+    );
+  }
 
-  // clearPin() {
-  //   if (pinIndex == 0) {
-  //     pinIndex = 0;
-  //   } else if (pinIndex == 4) {
-  //     setPin(pinIndex, "");
-  //     currentPin[pinIndex - 1] = "";
-  //     pinIndex--;
-  //   } else {
-  //     setPin(pinIndex, "");
-  //     currentPin[pinIndex - 1] = "";
-  //     pinIndex--;
-  //   }
-  // }
+  clearPin() {
+    if (pinIndex == 0) {
+      pinIndex = 0;
+    } else if (pinIndex == 4) {
+      setPin(pinIndex, "");
+      currentPin[pinIndex - 1] = "";
+      pinIndex--;
+    } else {
+      setPin(pinIndex, "");
+      currentPin[pinIndex - 1] = "";
+      pinIndex--;
+    }
+  }
 }
 
 class pinNumber extends StatelessWidget {
