@@ -154,14 +154,14 @@ class _CartState extends State<Cart> {
                       InkWell(
                         child: Icon(Icons.add),
                         onTap: () {
-                          // setState(() {
-                          //   if (foodItem.qty > 1) {
-                          //     foodItem.qty--;
-                          //     foodItem.itemTotal =
-                          //         foodItem.qty * foodItem.unitPrice;
-                          //     print(foodItem.itemTotal);
-                          //   }
-                          // });
+                          setState(() {
+                            if (foodItem.qty > 1) {
+                              foodItem.qty--;
+                              foodItem.itemTotal =
+                                  foodItem.qty * foodItem.unitPrice;
+                              print(foodItem.itemTotal);
+                            }
+                          });
                         },
                       ),
                       Padding(
@@ -172,14 +172,14 @@ class _CartState extends State<Cart> {
                       InkWell(
                         child: Icon(Icons.remove),
                         onTap: () {
-                          // setState(() {
-                          //   if (foodItem.available >= 1) {
-                          //     foodItem.qty++;
-                          //     foodItem.itemTotal =
-                          //         foodItem.qty * foodItem.unitPrice;
-                          //     print(foodItem.itemTotal);
-                          //   }
-                          // });
+                          setState(() {
+                            if (foodItem.available >= 1) {
+                              foodItem.qty++;
+                              foodItem.itemTotal =
+                                  foodItem.qty * foodItem.unitPrice;
+                              print(foodItem.itemTotal);
+                            }
+                          });
                         },
                       ),
                     ],
