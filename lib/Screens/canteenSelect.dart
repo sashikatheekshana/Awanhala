@@ -27,7 +27,7 @@ class _CanteenSelectState extends State<CanteenSelect> {
             //   //should add selection drop down
             // ),
             title: Text("Select the Canteen"),
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.red[400],
           ),
           drawer: Drawer(),
           body: Column(

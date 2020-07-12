@@ -11,6 +11,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Cantime Home"),
+        backgroundColor: Colors.red[400],
       ),
     );
   }

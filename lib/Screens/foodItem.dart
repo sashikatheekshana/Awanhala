@@ -22,7 +22,7 @@ class FoodItem extends StatelessWidget {
             onPressed: (null),
             //should add selection drop down
           ),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.red[400],
         ),
         body: Column(
           children: <Widget>[
