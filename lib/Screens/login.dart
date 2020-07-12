@@ -24,7 +24,7 @@ class _LoginState extends State<Login> {
       print(password);
       final body = jsonEncode({"email": email, "password": password});
 
-      var url = 'http://3.94.213.153:3000/api/user/login';
+      var url = 'http://10.0.2.2:3000/api/user/login';
       var response = await http.post(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
 
       // var jsonResponse = json.decode(response.body);
       // print(jsonResponse);
-      print(response.body);
+      print(response.body.runtimeType);
 
       if (response.statusCode == 200) {
         print('user login successfull');
