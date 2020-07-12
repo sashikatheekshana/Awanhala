@@ -21,12 +21,12 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Registraion"),
-        ),
+        // appBar: AppBar(
+        //   title: Text("Registraion"),
+        // ),
         body: Container(
-          child: SingleChildScrollView(
-            child: Center(
+          child: Center(
+            child: SingleChildScrollView(
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -222,29 +222,29 @@ class _RegistrationState extends State<Registration> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 15.0),
-                    Text(
-                      "Already have an account ?",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        color: Colors.black54,
-                      ),
-                    ),
-                    SizedBox(height: 10.0),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.pushNamed(context, '/login');
-                      },
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w200,
-                          color: Colors.black54,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                    ),
+                    // SizedBox(height: 15.0),
+                    // Text(
+                    //   "Already have an account ?",
+                    //   style: TextStyle(
+                    //     fontWeight: FontWeight.w300,
+                    //     color: Colors.black54,
+                    //   ),
+                    // ),
+                    // SizedBox(height: 10.0),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.pop(context);
+                    //     Navigator.pushNamed(context, '/login');
+                    //   },
+                    //   child: Text(
+                    //     "Sign In",
+                    //     style: TextStyle(
+                    //       fontWeight: FontWeight.w200,
+                    //       color: Colors.black54,
+                    //       fontStyle: FontStyle.italic,
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
