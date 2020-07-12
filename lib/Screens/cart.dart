@@ -152,7 +152,7 @@ class _CartState extends State<Cart> {
                   child: Row(
                     children: <Widget>[
                       InkWell(
-                        child: Icon(Icons.add),
+                        child: Icon(Icons.remove),
                         onTap: () {
                           setState(() {
                             if (foodItem.qty > 1) {
@@ -170,7 +170,7 @@ class _CartState extends State<Cart> {
                         child: Text(foodItem.qty.toString()),
                       ),
                       InkWell(
-                        child: Icon(Icons.remove),
+                        child: Icon(Icons.add),
                         onTap: () {
                           setState(() {
                             if (foodItem.available >= 1) {
