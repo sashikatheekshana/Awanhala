@@ -24,7 +24,7 @@ class Awanhala extends StatelessWidget {
     return GetMaterialApp(
         title: 'Awanahala',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/forgotPass',
+        initialRoute: '/foodItem',
         routes: {
           '/login': (context) => Login(),
           '/sighUp': (context) => SignUp(),

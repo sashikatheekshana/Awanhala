@@ -27,7 +27,7 @@ class FoodItem extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Container(
-              color: Colors.yellowAccent,
+              color: Colors.yellow[300],
               height: blockHeight * 20,
               child: Row(
                 children: <Widget>[
@@ -55,6 +55,78 @@ class FoodItem extends StatelessWidget {
                 ],
               ),
             ),
+            Container(
+              height: blockHeight * 8,
+              child: Expanded(
+                child: ListView(
+                  // This next line does the trick.
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    FlatButton(
+                      disabledTextColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                        side: BorderSide(color: Colors.black),
+                      ),
+                      child: Text(
+                        "Breakfast",
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: (null),
+                    ),
+                    FlatButton(
+                      disabledTextColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                        side: BorderSide(color: Colors.black),
+                      ),
+                      child: Text(
+                        "Lunch",
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: (null),
+                    ),
+                    FlatButton(
+                      disabledTextColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                        side: BorderSide(color: Colors.black),
+                      ),
+                      child: Text(
+                        "Beverages",
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: (null),
+                    ),
+                    FlatButton(
+                      color: Colors.pink,
+                      disabledTextColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                        side: BorderSide(color: Colors.black),
+                      ),
+                      child: Text(
+                        "Short Eats",
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: (null),
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
