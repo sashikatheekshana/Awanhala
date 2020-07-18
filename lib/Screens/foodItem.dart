@@ -1,8 +1,11 @@
 import 'package:awanahala/shared/sizeConfig.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 
 class FoodItem extends StatelessWidget {
+  String selectedCanteen; // ID(key) selected canteen
+
+  FoodItem(this.selectedCanteen);
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -11,44 +14,42 @@ class FoodItem extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Food item"),
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              size: blockHeight * 5,
-              color: Colors.white,
-            ),
-            onPressed: (null),
-            //should add selection drop down
-          ),
-          backgroundColor: Colors.red,
-        ),
         body: Column(
           children: <Widget>[
             Container(
-              color: Colors.yellowAccent,
-              height: blockHeight * 20,
+              padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+              color: Colors.red[400].withOpacity(0.6),
               child: Row(
                 children: <Widget>[
-                  SizedBox(
-                    width: blockWidth * 5,
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.black87,
+                      size: 30.0,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                   ),
+                  SizedBox(width: 20.0),
                   CircleAvatar(
-                    radius: blockHeight * 8,
-                    backgroundImage: AssetImage("images/ucsc.jpg"),
+                    radius: 47,
+                    backgroundColor: Colors.black,
+                    child: CircleAvatar(
+                      radius: 45.0,
+                      backgroundImage: AssetImage("images/ucsc.jpg"),
+                    ),
                   ),
-                  SizedBox(
-                    width: blockWidth * 8,
-                  ),
+                  SizedBox(width: 15.0),
                   Container(
+                    padding: EdgeInsets.only(left: 20.0),
+                    width: 180.0,
                     child: Text(
-                      "UCSC Canteen",
+                      "Managment Canteen ",
                       style: TextStyle(
-                        fontSize: blockHeight * 2.5,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.normal,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black87,
                       ),
                     ),
                   ),
