@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:awanahala/Screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -73,9 +73,14 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Text('Cantima Login'),
-        // ),
+        
+        appBar: AppBar(
+          actions: <Widget>[
+            RaisedButton(onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder: (context)=>UserProfile()));
+            })
+          ],
+        ),
         body: Center(
           child: SingleChildScrollView(
             child: Form(
