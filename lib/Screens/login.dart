@@ -18,45 +18,46 @@ class _LoginState extends State<Login> {
 
   loginFun() async {
     if (_formKey.currentState.validate()) {
-      _formKey.currentState.save();
-      print('the form is valid');
-      print(email);
-      print(password);
-      final body = jsonEncode({"email": email, "password": password});
+      // // _formKey.currentState.save();
+      // // print('the form is valid');
+      // // print(email);
+      // // print(password);
+      // // final body = jsonEncode({"email": email, "password": password});
 
-      var url = 'http://10.0.2.2:3000/api/user/login';
-      var response = await http.post(url,
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          },
-          body: body);
+      // // var url = 'http://10.0.2.2:3000/api/user/login';
+      // // var response = await http.post(url,
+      // //     headers: <String, String>{
+      // //       'Content-Type': 'application/json; charset=UTF-8',
+      // //     },
+      // //     body: body);
 
-      // var jsonResponse = json.decode(response.body);
-      // print(jsonResponse);
-      print(response.body.runtimeType);
+      // // // var jsonResponse = json.decode(response.body);
+      // // // print(jsonResponse);
+      // // print(response.body.runtimeType);
 
-      if (response.statusCode == 200) {
-        print('user login successfull');
+      // // if (response.statusCode == 200) {
+      // //   print('user login successfull');
 
-        Get.snackbar("Success", response.body,
-            icon: Icon(
-              Icons.done,
-              color: Colors.green,
-            ));
+      // //   Get.snackbar("Success", response.body,
+      // //       icon: Icon(
+      // //         Icons.done,
+      // //         color: Colors.green,
+      // //       ));
 
-        // Future.delayed(Duration(seconds: 10));
-        Get.toNamed("/canteenSelect");
-      } else {
-        print('login error');
-        Get.snackbar(
-          "Login error",
-          response.body,
-          icon: Icon(
-            Icons.error,
-            color: Colors.red,
-          ),
-        );
-      }
+      // //   // Future.delayed(Duration(seconds: 10));
+      //   Get.toNamed("/canteenSelect");
+      // } else {
+      //   print('login error');
+      //   Get.snackbar(
+      //     "Login error",
+      //     response.body,
+      //     icon: Icon(
+      //       Icons.error,
+      //       color: Colors.red,
+      //     ),
+      //   );
+      // }
+      Get.toNamed("/canteenSelect");
     } else {
       Get.snackbar(
         "Input error",
@@ -73,11 +74,11 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        
         appBar: AppBar(
           actions: <Widget>[
-            RaisedButton(onPressed: (){
-              Navigator.push(context,MaterialPageRoute(builder: (context)=>UserProfile()));
+            RaisedButton(onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => UserProfile()));
             })
           ],
         ),
