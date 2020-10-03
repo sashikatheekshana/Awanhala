@@ -1,4 +1,7 @@
+import 'package:awanahala/bloc/SignUpBloc.dart';
+import 'package:awanahala/events/SignUpEvent.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Registration extends StatefulWidget {
   @override
@@ -9,6 +12,10 @@ class _RegistrationState extends State<Registration> {
   final _formKey = GlobalKey<FormState>();
   RegExp regex1 = new RegExp(r'^([0-9]{9}[x|X|v|V])$');
   RegExp regex2 = new RegExp(r'^([0-9]{12})$');
+  String fullName;
+  String phoneNumber;
+  String email;
+  String nic;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +55,9 @@ class _RegistrationState extends State<Registration> {
                               return null;
                             }
                           },
+                          onSaved: (newValue) {
+                            fullName = newValue;
+                          },
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(10.0),
                             enabledBorder: OutlineInputBorder(
@@ -84,6 +94,9 @@ class _RegistrationState extends State<Registration> {
                             } else {
                               return null;
                             }
+                          },
+                          onSaved: (newValue) {
+                            phoneNumber = newValue;
                           },
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(10.0),
@@ -130,6 +143,9 @@ class _RegistrationState extends State<Registration> {
                             fillColor: Colors.grey[200],
                             border: InputBorder.none,
                           ),
+                          onSaved: (newValue) {
+                            email = newValue;
+                          },
                         ),
                       ),
                     ),
@@ -145,8 +161,11 @@ class _RegistrationState extends State<Registration> {
                                     regex2.hasMatch(value))) {
                               return null;
                             } else {
-                              return 'Enter valid NID number';
+                              return 'Enter valid NIC number';
                             }
+                          },
+                          onSaved: (newValue) {
+                            nic = newValue;
                           },
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.all(10.0),
@@ -194,6 +213,10 @@ class _RegistrationState extends State<Registration> {
                           color: Colors.green[300],
                           onPressed: () {
                             if (_formKey.currentState.validate()) {
+                              _formKey.currentState.save();
+                              BlocProvider.of<SignUpBloc>(context).add(
+                                  SignUpEvent.addOtherData(
+                                      fullName, phoneNumber, email, nic));
                               Navigator.pushNamed(context, '/finalReg');
                             }
                           },

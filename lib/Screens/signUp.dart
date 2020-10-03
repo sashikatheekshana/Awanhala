@@ -1,4 +1,7 @@
+import 'package:awanahala/bloc/SignUpBloc.dart';
+import 'package:awanahala/events/SignUpEvent.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -10,6 +13,9 @@ class _SignUpState extends State<SignUp> {
   bool _isReEnterPasswordObs = true;
   final _formKey = GlobalKey<FormState>();
   String _pass1;
+  String userName;
+  String passWord;
+  String confirmPass;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +53,9 @@ class _SignUpState extends State<SignUp> {
                             return null;
                           }
                         },
+                        onSaved: (newValue) {
+                          userName = newValue.trim();
+                        },
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(10.0),
                           enabledBorder: OutlineInputBorder(
@@ -82,6 +91,9 @@ class _SignUpState extends State<SignUp> {
                             _pass1 = value;
                             return null;
                           }
+                        },
+                        onSaved: (newValue) {
+                          passWord = newValue.trim();
                         },
                         obscureText: _isPasswordObs,
                         decoration: InputDecoration(
@@ -132,6 +144,9 @@ class _SignUpState extends State<SignUp> {
                           } else {
                             return null;
                           }
+                        },
+                        onSaved: (newValue) {
+                          confirmPass = newValue;
                         },
                         obscureText: _isReEnterPasswordObs,
                         decoration: InputDecoration(
@@ -192,6 +207,10 @@ class _SignUpState extends State<SignUp> {
                         color: Colors.green[300],
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
+                            _formKey.currentState.save();
+                            BlocProvider.of<SignUpBloc>(context).add(
+                                SignUpEvent.addUserNameAndPWord(
+                                    userName, passWord));
                             Navigator.pushNamed(context, '/registration');
                           }
                         },

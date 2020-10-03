@@ -1,3 +1,5 @@
+
+import 'package:awanahala/Screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -12,6 +14,12 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Cantime Home"),
         backgroundColor: Colors.red[400],
+      ),
+      body: Center(
+        child: RaisedButton(onPressed: (){
+         Navigator.push(context,MaterialPageRoute(builder: (context)=>UserProfile()));
+        },
+        child: Text("fuck me"),),
       ),
     );
   }

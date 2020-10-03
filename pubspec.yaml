@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   http: ^0.12.1
   get: ^3.2.2
+  flutter_bloc: ^5.0.1
 
 
 
@@ -57,7 +58,7 @@ flutter:
     - images/foods/plainTea.jpg
     - images/foods/tea.jpg
     - images/foods/wade.jpg
-    - images/foods/chickenRoll.jpg
+    - images/foods/chickenRoll.JPG
     - images/qrCode.jpg
     - images/
 
