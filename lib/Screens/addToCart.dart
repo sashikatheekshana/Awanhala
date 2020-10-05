@@ -2,15 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:awanahala/shared/sizeConfig.dart';
 
 class AddToCart extends StatefulWidget {
+  String itemName;
+  double unitPrice;
+  String imageURL;
+  AddToCart(this.itemName, this.unitPrice, this.imageURL);
   @override
   _AddToCartState createState() => _AddToCartState();
 }
 
 class _AddToCartState extends State<AddToCart> {
-  double unitPrice = 20.0;
-  double totalPrice = 20.0;
-  int itemCount = 1;
-  int available = 11;
+  double totalPrice;
+  int itemCount;
+  int available = 11; // get from databse
+
+  @override
+  void initState() {
+    itemCount = 1;
+    totalPrice = this.widget.unitPrice;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -32,8 +43,7 @@ class _AddToCartState extends State<AddToCart> {
                   Container(
                     height: blockHeight * 33,
                     width: blockHeight * 33,
-                    margin: EdgeInsets.only(
-                        top: blockHeight * 7, bottom: blockHeight * 4.5),
+                    margin: EdgeInsets.only(top: blockHeight * 7, bottom: blockHeight * 4.5),
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -53,15 +63,14 @@ class _AddToCartState extends State<AddToCart> {
                   Container(
                     width: double.infinity,
                     child: Padding(
-                      padding: EdgeInsets.only(
-                          left: blockWidth * 10, right: blockWidth * 10),
+                      padding: EdgeInsets.only(left: blockWidth * 10, right: blockWidth * 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Column(
                             children: <Widget>[
                               Text(
-                                "Plain Tea",
+                                this.widget.itemName,
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w300,
@@ -79,7 +88,7 @@ class _AddToCartState extends State<AddToCart> {
                                       ),
                                     ),
                                     TextSpan(
-                                      text: unitPrice.toString(),
+                                      text: this.widget.unitPrice.toString(),
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 16.0,
@@ -103,7 +112,7 @@ class _AddToCartState extends State<AddToCart> {
                                   ),
                                 ),
                                 TextSpan(
-                                  text: '$totalPrice',
+                                  text: this.totalPrice.toString(),
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 35.0,
@@ -132,10 +141,11 @@ class _AddToCartState extends State<AddToCart> {
                             child: MaterialButton(
                               onPressed: () {
                                 setState(() {
+                                  // ***** should connect with database (increase item count from database) *****
                                   if (itemCount > 1) {
                                     itemCount = itemCount - 1;
                                     available++;
-                                    totalPrice = unitPrice * itemCount;
+                                    totalPrice = this.widget.unitPrice * itemCount;
                                   }
                                 });
                               },
@@ -155,7 +165,7 @@ class _AddToCartState extends State<AddToCart> {
                             width: 70.0,
                             child: Center(
                               child: Text(
-                                '$itemCount',
+                                itemCount.toString(),
                                 style: TextStyle(
                                   color: Colors.green[400],
                                   fontSize: 40.0,
@@ -177,10 +187,11 @@ class _AddToCartState extends State<AddToCart> {
                             child: MaterialButton(
                               onPressed: () {
                                 if (available >= 1) {
+                                  // ***** should connect with database (decrese item count from database) *****
                                   setState(() {
                                     itemCount = itemCount + 1;
                                     available--;
-                                    totalPrice = unitPrice * itemCount;
+                                    totalPrice = this.widget.unitPrice * itemCount;
                                   });
                                 }
                               },
@@ -208,7 +219,7 @@ class _AddToCartState extends State<AddToCart> {
                           Row(
                             children: <Widget>[
                               Text(
-                                "$available",
+                                available.toString(),
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w600,
@@ -253,14 +264,16 @@ class _AddToCartState extends State<AddToCart> {
                         textColor: Colors.white,
                         splashColor: Colors.green,
                         color: Colors.green[300],
-                        onPressed: () {},
+                        onPressed: () {
+                          //  ******* Need to implemet add cart business logic (update cart) **********
+                          Navigator.pop(context);
+                        },
                       ),
                     ),
                   ),
                   SizedBox(height: blockHeight * 1.5),
                   Padding(
-                    padding: EdgeInsets.only(
-                        left: blockWidth * 8, right: blockWidth * 8),
+                    padding: EdgeInsets.only(left: blockWidth * 8, right: blockWidth * 8),
                     child: Divider(
                       color: Colors.green[900],
                     ),
@@ -275,6 +288,7 @@ class _AddToCartState extends State<AddToCart> {
                         bottom: blockHeight * 4,
                       ),
                       child: Text(
+                        // ********* get data from database (daily comments) ***********
                         "කන්නෙපා මල ජරාව. ලුනුත් නෑ, බොක හොද්ද වගේ මෙලෝ රහක් නෑ..",
                         style: TextStyle(
                           fontSize: 16.0,
