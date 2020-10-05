@@ -22,6 +22,7 @@ class _ForgotPassState extends State<ForgotPass> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Verification"),
+          backgroundColor: Colors.red[400],
         ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
