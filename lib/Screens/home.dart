@@ -1,5 +1,5 @@
 
-import 'package:awanahala/Screens/profile/profile.dart';
+import 'package:awanahala/Screens/profile.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
