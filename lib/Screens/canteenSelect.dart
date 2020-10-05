@@ -4,6 +4,8 @@ import 'package:awanahala/shared/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'foodItem.dart';
+
 class CanteenSelect extends StatefulWidget {
   @override
   _CanteenSelectState createState() => _CanteenSelectState();
@@ -17,156 +19,74 @@ class _CanteenSelectState extends State<CanteenSelect> {
     double blockWidth = SizeConfig.safeBlockHorizontal;
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(
-            // leading: IconButton(
-            //   icon: Icon(
-            //     Icons.list,
-            //     size: 40,
-            //   ),
-            //   onPressed: (null),
-            //   //should add selection drop down
-            // ),
-            title: Text("Select the Canteen"),
-            backgroundColor: Colors.red[400],
+        appBar: AppBar(
+          title: Text("Select the Canteen"),
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.red[400],
+        ),
+        body: Container(
+          padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 20.0),
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: 5,
+            itemBuilder: (context, position) {
+              return buildListItem("Managment Canteen ", "images/ucsc.jpg");
+            },
           ),
-          drawer: Drawer(),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        ),
+      ),
+    );
+  }
+
+  buildListItem(String canteenName, String imageURL) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
+      width: double.infinity,
+      child: InkWell(
+        child: Container(
+          padding: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 25.0),
+          decoration: BoxDecoration(
+            color: Colors.green[100].withOpacity(0.6),
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
+            ),
+          ),
+          child: Row(
             children: <Widget>[
+              CircleAvatar(
+                radius: 40.0,
+                backgroundImage: AssetImage(imageURL),
+              ),
+              SizedBox(width: 20.0),
               Container(
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: blockWidth * 10,
-                    ),
-                    CircleAvatar(
-                      radius: blockHeight * 6.4,
-                      backgroundImage: AssetImage("images/ucsc.jpg"),
-                    ),
-                    SizedBox(
-                      width: blockWidth * 8,
-                    ),
-                    Container(
-                      width: blockWidth * 0.5,
-                      height: blockHeight * 5.25,
-                      color: Colors.black,
-                    ),
-                    RaisedButton(
-                      onPressed: null,
-                      disabledColor: Colors.transparent,
-                      child: Text(
-                        "UCSC Canteen",
-                        style: TextStyle(
-                          fontSize: blockHeight * 2.5,
-                          color: Colors.black87,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                width: 1.0,
+                height: 40.0,
+                color: Colors.black,
               ),
               Container(
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: blockWidth * 10,
-                    ),
-                    CircleAvatar(
-                      radius: blockHeight * 6.4,
-                      backgroundImage: AssetImage("images/art.jpg"),
-                    ),
-                    SizedBox(
-                      width: blockWidth * 8,
-                    ),
-                    Container(
-                      width: blockWidth * 0.5,
-                      height: blockHeight * 5.25,
-                      color: Colors.black,
-                    ),
-                    RaisedButton(
-                      onPressed: null,
-                      disabledColor: Colors.transparent,
-                      child: Text(
-                        "ART Canteen",
-                        style: TextStyle(
-                          fontSize: blockHeight * 2.5,
-                          color: Colors.black87,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: blockWidth * 10,
-                    ),
-                    CircleAvatar(
-                      radius: blockHeight * 6.4,
-                      backgroundImage: AssetImage("images/law.jpg"),
-                    ),
-                    SizedBox(
-                      width: blockWidth * 8,
-                    ),
-                    Container(
-                      width: blockWidth * 0.5,
-                      height: blockHeight * 5.25,
-                      color: Colors.black,
-                    ),
-                    RaisedButton(
-                      onPressed: null,
-                      disabledColor: Colors.transparent,
-                      child: Text(
-                        "LAW Canteen",
-                        style: TextStyle(
-                          fontSize: blockHeight * 2.5,
-                          color: Colors.black87,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: blockWidth * 10,
-                    ),
-                    CircleAvatar(
-                      radius: blockHeight * 6.4,
-                      backgroundImage: AssetImage("images/science.jpg"),
-                    ),
-                    SizedBox(
-                      width: blockWidth * 8,
-                    ),
-                    Container(
-                      width: blockWidth * 0.5,
-                      height: blockHeight * 5.25,
-                      color: Colors.black,
-                    ),
-                    RaisedButton(
-                      onPressed: null,
-                      disabledColor: Colors.transparent,
-                      child: Text(
-                        "SCIENCE Canteen",
-                        style: TextStyle(
-                          fontSize: blockHeight * 2.5,
-                          color: Colors.black87,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                    ),
-                  ],
+                padding: EdgeInsets.only(left: 20.0),
+                width: 180.0,
+                child: Text(
+                  canteenName,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black87,
+                  ),
                 ),
               ),
             ],
-          )),
+          ),
+        ),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FoodItem(canteenName),
+            ),
+          );
+        },
+      ),
     );
   }
 }

@@ -41,14 +41,14 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          actions: <Widget>[
-            RaisedButton(onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => UserProfile()));
-            })
-          ],
-        ),
+        // appBar: AppBar(
+        //   actions: <Widget>[
+        //     RaisedButton(onPressed: () {
+        //       Navigator.push(context,
+        //           MaterialPageRoute(builder: (context) => UserProfile()));
+        //     })
+        //   ],
+        // ),
         body: Center(
           child: SingleChildScrollView(
             child: Form(
@@ -85,13 +85,11 @@ class _LoginState extends State<Login> {
                           contentPadding: EdgeInsets.all(10.0),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           prefixIcon: Icon(Icons.person),
                           hintText: "Email",
@@ -122,13 +120,11 @@ class _LoginState extends State<Login> {
                           contentPadding: EdgeInsets.all(10.0),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           prefixIcon: Icon(Icons.vpn_key),
                           suffixIcon: GestureDetector(
@@ -138,9 +134,7 @@ class _LoginState extends State<Login> {
                               });
                             },
                             child: Icon(
-                              _isPasswordObs
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              _isPasswordObs ? Icons.visibility : Icons.visibility_off,
                             ),
                           ),
                           hintText: "Password",
@@ -156,8 +150,7 @@ class _LoginState extends State<Login> {
                     color: Colors.transparent,
                     width: double.infinity,
                     child: Padding(
-                      padding: EdgeInsets.only(
-                          left: 50.0, right: 50.0, top: 10.0, bottom: 10.0),
+                      padding: EdgeInsets.only(left: 50.0, right: 50.0, top: 10.0, bottom: 10.0),
                       child: MaterialButton(
                         height: 50.0,
                         shape: RoundedRectangleBorder(
