@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:awanahala/Screens/profile.dart';
+import 'package:awanahala/Screens/profile/profile.dart';
 import 'package:awanahala/service_locator/service_locator.dart';
 import 'package:awanahala/services/auth_service.dart';
 import 'package:flutter/material.dart';

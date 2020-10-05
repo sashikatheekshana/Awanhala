@@ -1,5 +1,4 @@
 import 'package:awanahala/Screens/foodItem.dart';
-import 'package:awanahala/Screens/profile.dart';
 import 'package:awanahala/bloc/SignUpBloc.dart';
 import 'package:awanahala/models/User.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +45,7 @@ class Awanhala extends StatelessWidget {
       child: GetMaterialApp(
         title: 'Awanahala',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/profile',
+        initialRoute: '/login',
         routes: {
           '/login': (context) => Login(),
           '/sighUp': (context) => SignUp(),
@@ -59,7 +58,6 @@ class Awanhala extends StatelessWidget {
           '/addToCart': (context) => AddToCart(),
           '/cart': (context) => Cart(),
           '/scanQR': (context) => ScanQR(),
-          '/profile' : (context) => UserProfile(),
         },
       ),
     );
