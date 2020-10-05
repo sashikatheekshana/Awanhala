@@ -11,15 +11,10 @@ import 'forgotPass.dart';
 import 'registration.dart';
 import 'finalReg.dart';
 import 'home.dart';
-import 'addToCart.dart';
 import 'cart.dart';
 import 'scanQR.dart';
-
-import 'package:awanahala/Screens/login.dart';
-import 'package:awanahala/Screens/signUp.dart';
-import 'package:awanahala/Screens/forgotPass.dart';
-import 'package:awanahala/Screens/canteenSelect.dart';
-import 'package:awanahala/Screens/ratethefood.dart';
+import 'canteenSelect.dart';
+import 'ratethefood.dart';
 
 class Awanhala extends StatelessWidget {
   @override
@@ -27,23 +22,22 @@ class Awanhala extends StatelessWidget {
     return BlocProvider<SignUpBloc>(
       create: (context) => SignUpBloc(User()),
       child: GetMaterialApp(
-          title: 'Awanahala',
-          debugShowCheckedModeBanner: false,
-          initialRoute: '/login',
-          routes: {
-            '/login': (context) => Login(),
-            '/sighUp': (context) => SignUp(),
-            '/forgotPass': (context) => ForgotPass(),
-            '/registration': (context) => Registration(),
-            '/finalReg': (context) => FinalReg(),
-            '/home': (context) => Home(),
-            '/canteenSelect': (context) => CanteenSelect(),
-            '/rateFood': (context) => RateFood(),
-            '/foodItem': (context) => FoodItem(),
-            '/addToCart': (context) => AddToCart(),
-            '/cart': (context) => Cart(),
-            '/scanQR': (context) => ScanQR(),
-          }),
+        title: 'Awanahala',
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/login',
+        routes: {
+          '/login': (context) => Login(),
+          '/sighUp': (context) => SignUp(),
+          '/forgotPass': (context) => ForgotPass(),
+          '/registration': (context) => Registration(),
+          '/finalReg': (context) => FinalReg(),
+          '/home': (context) => Home(),
+          '/canteenSelect': (context) => CanteenSelect(),
+          '/rateFood': (context) => RateFood(),
+          '/cart': (context) => Cart(),
+          '/scanQR': (context) => ScanQR(),
+        },
+      ),
     );
   }
 }
