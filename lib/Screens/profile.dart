@@ -17,10 +17,15 @@ class _UserProfileState extends State<UserProfile> {
     return ListView(
       children: <Widget>[
         _profilepic(),
+        //_divider(),
         _profiledetails(),
+        _divider(),
         _heading("Ongoing oders"),
+        _divider(),
         _myongoingoders(),
+        _divider(),
         _heading("Past Orders"),
+        _divider(),
         _mypastoders(),
       ],
     );
@@ -32,6 +37,17 @@ class _UserProfileState extends State<UserProfile> {
       child: CircleAvatar(
         minRadius: 60,
       ),
+    );
+  }
+
+  Widget _divider(){
+    return Padding(
+      padding: EdgeInsets.only(top:10),
+      child: Container(
+        height: 0.5,
+        color: Colors.black,
+      ),
+    
     );
   }
 
@@ -49,7 +65,7 @@ class _UserProfileState extends State<UserProfile> {
             "Theekshanasashika@gmail.com",
             style: TextStyle(fontSize: 16, color: Color(0xffaeaeae)),
           ),
-          SizedBox(height: 24),
+          SizedBox(height: 20),
           // Expanded(child: _myoders())
         ],
       ),
@@ -71,7 +87,7 @@ class _UserProfileState extends State<UserProfile> {
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Container(
-              height: 8,
+              height: 6,
               width: MediaQuery.of(context).size.width / 3,
               color: Colors.red,
             ),
@@ -96,7 +112,7 @@ class _UserProfileState extends State<UserProfile> {
                     "http://s3.amazonaws.com/foodspotting-ec2/reviews/2310941/thumb_600.jpg?1346218231",
                     fit: BoxFit.cover,
                   ),
-                  height: 185,
+                  height: 180,
                   color: Colors.blue,
                   width: MediaQuery.of(context).size.width - 64,
                 ),
@@ -112,7 +128,7 @@ class _UserProfileState extends State<UserProfile> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Text("Price : 380"),
-                    Text("Quentity : 4"),
+                    Text("Quantity : 4"),
                   ],
                 ),
                 SizedBox(height: 16),
@@ -151,7 +167,7 @@ class _UserProfileState extends State<UserProfile> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Text("Price : 380"),
-                    Text("Quentity : 4"),
+                    Text("Quantity : 4"),
                   ],
                 ),
                 
