@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class FoodItem extends StatefulWidget {
   String selectedCanteen; // ID(key) selected canteen
+
   FoodItem(this.selectedCanteen);
   @override
   _FoodItemState createState() => _FoodItemState();
@@ -135,6 +136,7 @@ class _FoodItemState extends State<FoodItem> with SingleTickerProviderStateMixin
                             ),
                           ],
                         ),
+
                       ),
                     ],
                   ),
@@ -156,6 +158,8 @@ class _FoodItemState extends State<FoodItem> with SingleTickerProviderStateMixin
               ],
             ),
           ),
+
+            
         ),
       ),
     );

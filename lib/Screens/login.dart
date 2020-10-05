@@ -1,5 +1,7 @@
 import 'dart:convert';
-import 'package:awanahala/Screens/profile/profile.dart';
+import 'package:awanahala/Screens/profile.dart';
+import 'package:awanahala/service_locator/service_locator.dart';
+import 'package:awanahala/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -15,49 +17,14 @@ class _LoginState extends State<Login> {
   String email;
   String password;
   final _formKey = GlobalKey<FormState>();
+  AuthService authService = locator<AuthService>();
 
   loginFun() async {
     if (_formKey.currentState.validate()) {
-      // // _formKey.currentState.save();
-      // // print('the form is valid');
-      // // print(email);
-      // // print(password);
-      // // final body = jsonEncode({"email": email, "password": password});
+      _formKey.currentState.save();
 
-      // // var url = 'http://10.0.2.2:3000/api/user/login';
-      // // var response = await http.post(url,
-      // //     headers: <String, String>{
-      // //       'Content-Type': 'application/json; charset=UTF-8',
-      // //     },
-      // //     body: body);
-
-      // // // var jsonResponse = json.decode(response.body);
-      // // // print(jsonResponse);
-      // // print(response.body.runtimeType);
-
-      // // if (response.statusCode == 200) {
-      // //   print('user login successfull');
-
-      // //   Get.snackbar("Success", response.body,
-      // //       icon: Icon(
-      // //         Icons.done,
-      // //         color: Colors.green,
-      // //       ));
-
-      // //   // Future.delayed(Duration(seconds: 10));
-      //   Get.toNamed("/canteenSelect");
-      // } else {
-      //   print('login error');
-      //   Get.snackbar(
-      //     "Login error",
-      //     response.body,
-      //     icon: Icon(
-      //       Icons.error,
-      //       color: Colors.red,
-      //     ),
-      //   );
-      // }
-      Get.toNamed("/canteenSelect");
+      authService.signIn(email, password);
+      // _formKey.currentState.reset();
     } else {
       Get.snackbar(
         "Input error",
@@ -74,14 +41,14 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          actions: <Widget>[
-            RaisedButton(onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => UserProfile()));
-            })
-          ],
-        ),
+        // appBar: AppBar(
+        //   actions: <Widget>[
+        //     RaisedButton(onPressed: () {
+        //       Navigator.push(context,
+        //           MaterialPageRoute(builder: (context) => UserProfile()));
+        //     })
+        //   ],
+        // ),
         body: Center(
           child: SingleChildScrollView(
             child: Form(
@@ -118,13 +85,11 @@ class _LoginState extends State<Login> {
                           contentPadding: EdgeInsets.all(10.0),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           prefixIcon: Icon(Icons.person),
                           hintText: "Email",
@@ -155,13 +120,11 @@ class _LoginState extends State<Login> {
                           contentPadding: EdgeInsets.all(10.0),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           prefixIcon: Icon(Icons.vpn_key),
                           suffixIcon: GestureDetector(
@@ -171,9 +134,7 @@ class _LoginState extends State<Login> {
                               });
                             },
                             child: Icon(
-                              _isPasswordObs
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                              _isPasswordObs ? Icons.visibility : Icons.visibility_off,
                             ),
                           ),
                           hintText: "Password",
@@ -189,8 +150,7 @@ class _LoginState extends State<Login> {
                     color: Colors.transparent,
                     width: double.infinity,
                     child: Padding(
-                      padding: EdgeInsets.only(
-                          left: 50.0, right: 50.0, top: 10.0, bottom: 10.0),
+                      padding: EdgeInsets.only(left: 50.0, right: 50.0, top: 10.0, bottom: 10.0),
                       child: MaterialButton(
                         height: 50.0,
                         shape: RoundedRectangleBorder(

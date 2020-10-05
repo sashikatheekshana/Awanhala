@@ -28,7 +28,7 @@ class _RateFoodState extends State<RateFood> {
             //should add selection drop down
           ),
           title: Text("Rate the Food"),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.red[400],
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

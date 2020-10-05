@@ -32,7 +32,7 @@ class _AddToCartState extends State<AddToCart> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Add to Cart"),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.red[400],
         ),
         body: Container(
           child: SingleChildScrollView(

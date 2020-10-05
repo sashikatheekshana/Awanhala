@@ -23,6 +23,7 @@ class _RegistrationState extends State<Registration> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Registraion"),
+          backgroundColor: Colors.red[400],
         ),
         body: Container(
           child: SingleChildScrollView(
