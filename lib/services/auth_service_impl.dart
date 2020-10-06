@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:awanahala/models/User.dart';
 import 'package:awanahala/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -63,4 +64,7 @@ class AuthServiceImpl extends AuthService {
       );
     }
   }
+
+  @override
+  Future<void> signUp(User user) async {}
 }

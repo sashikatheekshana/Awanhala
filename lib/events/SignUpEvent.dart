@@ -1,6 +1,6 @@
 import 'package:awanahala/models/User.dart';
 
-enum SignUpEventyType { addUserNameAndPWord, addOtherData }
+enum SignUpEventyType { addUserNameAndPWord, addOtherData, addFinalData }
 
 class SignUpEvent {
   User user;
@@ -26,5 +26,14 @@ class SignUpEvent {
     this.user.phoneNumber = phoneNum;
     this.user.email = email;
     this.user.nic = nic;
+  }
+
+  SignUpEvent.addFinalData(String university, String faculty) {
+    user = User();
+
+    this.signUpEventyType = SignUpEventyType.addFinalData;
+
+    this.user.university = university;
+    this.user.faculty = faculty;
   }
 }
