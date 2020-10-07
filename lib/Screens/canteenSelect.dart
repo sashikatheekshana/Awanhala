@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+import 'package:awanahala/models/University.dart';
+import 'package:awanahala/service_locator/service_locator.dart';
+import 'package:awanahala/services/university_service.dart';
 import 'package:awanahala/shared/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -12,6 +15,8 @@ class CanteenSelect extends StatefulWidget {
 }
 
 class _CanteenSelectState extends State<CanteenSelect> {
+  final UniversityService universityService = locator<UniversityService>();
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -21,16 +26,30 @@ class _CanteenSelectState extends State<CanteenSelect> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Select the Canteen"),
-          automaticallyImplyLeading: false,
+          // automaticallyImplyLeading: false,
           backgroundColor: Colors.red[400],
         ),
+        drawer: Drawer(),
         body: Container(
           padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 20.0),
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: 5,
-            itemBuilder: (context, position) {
-              return buildListItem("Managment Canteen ", "images/ucsc.jpg");
+          child: FutureBuilder(
+            future: universityService.getUniversities(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                List<University> universities = snapshot.data;
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, position) {
+                    return buildListItem(
+                        universities[position].university, "images/ucsc.jpg");
+                  },
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
             },
           ),
         ),
