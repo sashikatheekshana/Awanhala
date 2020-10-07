@@ -16,6 +16,7 @@ class _ScanQRState extends State<ScanQR> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("My Cart"),
+          backgroundColor: Colors.red[400],
         ),
         body: SingleChildScrollView(
           child: Column(

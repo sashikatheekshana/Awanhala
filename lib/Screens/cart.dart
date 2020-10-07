@@ -29,6 +29,7 @@ class _CartState extends State<Cart> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("My Cart"),
+          backgroundColor: Colors.red[400],
         ),
         body: Column(
           children: <Widget>[
@@ -36,8 +37,7 @@ class _CartState extends State<Cart> {
               child: Container(
                 child: ListView.builder(
                   itemCount: selectedFoodList.length,
-                  itemBuilder: (context, index) =>
-                      buildFoodList(context, index),
+                  itemBuilder: (context, index) => buildFoodList(context, index),
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                 ),
@@ -50,9 +50,7 @@ class _CartState extends State<Cart> {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
-                        left: blockWidth * 10,
-                        right: blockWidth * 9,
-                        top: blockHeight * 5),
+                        left: blockWidth * 10, right: blockWidth * 9, top: blockHeight * 5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -80,9 +78,7 @@ class _CartState extends State<Cart> {
                     width: double.infinity,
                     child: Padding(
                       padding: EdgeInsets.only(
-                          left: blockWidth * 10,
-                          right: blockWidth * 10,
-                          top: blockHeight * 4),
+                          left: blockWidth * 10, right: blockWidth * 10, top: blockHeight * 4),
                       child: MaterialButton(
                         height: blockHeight * 8.5,
                         shape: RoundedRectangleBorder(
@@ -157,16 +153,14 @@ class _CartState extends State<Cart> {
                           setState(() {
                             if (foodItem.qty > 1) {
                               foodItem.qty--;
-                              foodItem.itemTotal =
-                                  foodItem.qty * foodItem.unitPrice;
+                              foodItem.itemTotal = foodItem.qty * foodItem.unitPrice;
                               print(foodItem.itemTotal);
                             }
                           });
                         },
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                            left: blockWidth * 3, right: blockWidth * 3),
+                        padding: EdgeInsets.only(left: blockWidth * 3, right: blockWidth * 3),
                         child: Text(foodItem.qty.toString()),
                       ),
                       InkWell(
@@ -175,8 +169,7 @@ class _CartState extends State<Cart> {
                           setState(() {
                             if (foodItem.available >= 1) {
                               foodItem.qty++;
-                              foodItem.itemTotal =
-                                  foodItem.qty * foodItem.unitPrice;
+                              foodItem.itemTotal = foodItem.qty * foodItem.unitPrice;
                               print(foodItem.itemTotal);
                             }
                           });

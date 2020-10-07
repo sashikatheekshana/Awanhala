@@ -34,6 +34,7 @@ class _FinalRegState extends State<FinalReg> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Register2"),
+          backgroundColor: Colors.red[400],
         ),
         body: Container(
           child: SingleChildScrollView(
