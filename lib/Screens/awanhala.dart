@@ -20,32 +20,13 @@ import 'ratethefood.dart';
 class Awanhala extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-// <<<<<<< devsajith
-//     return GetMaterialApp(
-//         title: 'Awanahala',
-//         debugShowCheckedModeBanner: false,
-//         initialRoute: '/foodItem',
-//         routes: {
-//           '/login': (context) => Login(),
-//           '/sighUp': (context) => SignUp(),
-//           '/forgotPass': (context) => ForgotPass(),
-//           '/registration': (context) => Registration(),
-//           '/finalReg': (context) => FinalReg(),
-//           '/home': (context) => Home(),
-//           '/canteenSelect': (context) => CanteenSelect(),
-//           '/rateFood': (context) => RateFood(),
-//           '/foodItem': (context) => FoodItem(),
-//           '/addToCart': (context) => AddToCart(),
-//           '/cart': (context) => Cart(),
-//           '/scanQR': (context) => ScanQR(),
-//         });
-// =======
+
     return BlocProvider<SignUpBloc>(
       create: (context) => SignUpBloc(User()),
       child: GetMaterialApp(
         title: 'Awanahala',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/login',
+        initialRoute: '/rateFood',
 
         routes: {
           '/login': (context) => Login(),
@@ -58,10 +39,11 @@ class Awanhala extends StatelessWidget {
           '/rateFood': (context) => RateFood(),
           '/cart': (context) => Cart(),
           '/scanQR': (context) => ScanQR(),
+          '/profile': (context) => UserProfile(),
 
         },
       ),
     );
-// >>>>>>> master
+
   }
 }
