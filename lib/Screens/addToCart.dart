@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:awanahala/shared/sizeConfig.dart';
 
+
+// FOR SELECTED ITEM 
 class AddToCart extends StatefulWidget {
   String itemName;
   double unitPrice;
@@ -11,14 +13,14 @@ class AddToCart extends StatefulWidget {
 }
 
 class _AddToCartState extends State<AddToCart> {
-  double totalPrice;
-  int itemCount;
+  double totalPrice; // store the current state
+  int itemCount; // store the current state
   int available = 11; // get from databse
 
   @override
   void initState() {
     itemCount = 1;
-    totalPrice = this.widget.unitPrice;
+    totalPrice = this.widget.unitPrice; // initiall value(equal to unit price)
     super.initState();
   }
 
@@ -30,16 +32,75 @@ class _AddToCartState extends State<AddToCart> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Add to Cart"),
-          backgroundColor: Colors.red[400],
-        ),
         body: Container(
           child: SingleChildScrollView(
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  Container(
+                    
+                    child: Container(
+                      
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.red[400].withOpacity(0.9),
+                            spreadRadius: 0,
+                            blurRadius: 0.5,
+                            offset: Offset(0, 0), 
+                          ),
+                        ],
+                      ),
+                      height: 60,
+                      padding: EdgeInsets.only(top: 10.0, left: 10.0, right:10.0),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              IconButton(
+                                icon: Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.white70,
+                                  size: 30.0,
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              SizedBox(width: 15.0),
+                              Container(
+                                padding: EdgeInsets.only(left: 10.0),
+                                width: 150.0,
+                                child: Text(
+                                  "Add to cart", // *** CANTEEN NAME
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              IconButton(                      
+                                icon: Icon(
+                                  Icons.shopping_cart,
+                                  color: Colors.white70,
+                                ),
+                                splashColor: Colors.black,
+                                iconSize: 20.0,
+                                onPressed: () {
+                                  // navigate to shopping cart
+                                },
+                              ),
+                            ],
+                          ),   
+                        ],
+                      ),
+                    ),
+                  ),
+
+
                   Container(
                     height: blockHeight * 33,
                     width: blockHeight * 33,
@@ -56,7 +117,7 @@ class _AddToCartState extends State<AddToCart> {
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                     ),
                     child: CircleAvatar(
-                      backgroundImage: AssetImage("images/foods/plainTea.jpg"),
+                      backgroundImage: AssetImage("images/foods/plainTea.jpg"), //****  ITEM IMAGE  
                     ),
                   ),
                   SizedBox(height: blockHeight * 0.3),
@@ -70,7 +131,7 @@ class _AddToCartState extends State<AddToCart> {
                           Column(
                             children: <Widget>[
                               Text(
-                                this.widget.itemName,
+                                this.widget.itemName, //*** */ ITEM NAEM
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w300,
@@ -88,7 +149,7 @@ class _AddToCartState extends State<AddToCart> {
                                       ),
                                     ),
                                     TextSpan(
-                                      text: this.widget.unitPrice.toString(),
+                                      text: this.widget.unitPrice.toString(), // **** UNIT PRICE
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 16.0,
@@ -112,7 +173,7 @@ class _AddToCartState extends State<AddToCart> {
                                   ),
                                 ),
                                 TextSpan(
-                                  text: this.totalPrice.toString(),
+                                  text: this.totalPrice.toString(), // *** TOTAL PRICE
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 35.0,
@@ -219,7 +280,7 @@ class _AddToCartState extends State<AddToCart> {
                           Row(
                             children: <Widget>[
                               Text(
-                                available.toString(),
+                                available.toString(), // AVAILABLE ITEM COUNT
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w600,
@@ -265,8 +326,7 @@ class _AddToCartState extends State<AddToCart> {
                         splashColor: Colors.green,
                         color: Colors.green[300],
                         onPressed: () {
-                          //  ******* Need to implemet add cart business logic (update cart) **********
-                          Navigator.pop(context);
+                          //navigate to CART
                         },
                       ),
                     ),
@@ -288,7 +348,7 @@ class _AddToCartState extends State<AddToCart> {
                         bottom: blockHeight * 4,
                       ),
                       child: Text(
-                        // ********* get data from database (daily comments) ***********
+                        // *** users comments
                         "කන්නෙපා මල ජරාව. ලුනුත් නෑ, බොක හොද්ද වගේ මෙලෝ රහක් නෑ..",
                         style: TextStyle(
                           fontSize: 16.0,

@@ -1,4 +1,4 @@
-import 'package:awanahala/Screens/foodItem.dart';
+
 import 'package:awanahala/Screens/profile.dart';
 import 'package:awanahala/bloc/SignUpBloc.dart';
 import 'package:awanahala/models/User.dart';
