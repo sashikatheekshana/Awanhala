@@ -1,14 +1,19 @@
 import 'package:awanahala/Screens/foodItemCategory.dart';
+import 'package:awanahala/models/Items.dart';
+import 'package:awanahala/services/getItem_service.dart';
 import 'package:flutter/material.dart';
 
 class FoodItem extends StatefulWidget {
+
+  
   String selectedCanteen; // ID(key) selected canteen
   FoodItem(this.selectedCanteen);
   @override
   _FoodItemState createState() => _FoodItemState();
 }
 
-class _FoodItemState extends State<FoodItem> with SingleTickerProviderStateMixin {
+class _FoodItemState extends State<FoodItem>
+    with SingleTickerProviderStateMixin {
   TabController _tabController;
 
   @override
@@ -16,7 +21,7 @@ class _FoodItemState extends State<FoodItem> with SingleTickerProviderStateMixin
     _tabController = TabController(length: 5, vsync: this);
     super.initState();
   }
-
+  final HttpService httpService = HttpService();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,7 +37,7 @@ class _FoodItemState extends State<FoodItem> with SingleTickerProviderStateMixin
                         color: Colors.red[400].withOpacity(0.9),
                         spreadRadius: 0,
                         blurRadius: 0.5,
-                        offset: Offset(0, 0), 
+                        offset: Offset(0, 0),
                       ),
                     ],
                   ),
@@ -58,7 +63,8 @@ class _FoodItemState extends State<FoodItem> with SingleTickerProviderStateMixin
                             backgroundColor: Colors.black,
                             child: CircleAvatar(
                               radius: 35.0,
-                              backgroundImage: AssetImage("images/ucsc.jpg"), // *** CANTEEN IMAGE
+                              backgroundImage: AssetImage(
+                                  "images/ucsc.jpg"), // *** CANTEEN IMAGE
                             ),
                           ),
                           SizedBox(width: 15.0),
@@ -74,7 +80,7 @@ class _FoodItemState extends State<FoodItem> with SingleTickerProviderStateMixin
                               ),
                             ),
                           ),
-                          IconButton(                      
+                          IconButton(
                             icon: Icon(
                               Icons.shopping_cart,
                               color: Colors.black54,
@@ -147,6 +153,29 @@ class _FoodItemState extends State<FoodItem> with SingleTickerProviderStateMixin
                               ),
                             ),
                           ],
+                        ),
+                      ),
+                      Container(
+                        child: FutureBuilder(
+                          future: httpService.getItems(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<Item>> snapshot) {
+                            if (snapshot.hasData) {
+                              List<Item> items = snapshot.data;
+                              return ListView(
+                                children: items
+                                    .map(
+                                      (Item item) => ListTile(
+                                        title: Text(item.name),
+                                        subtitle: Text(item.id),
+                                      ),
+                                    )
+                                    .toList(),
+                              );
+                            } else {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                          },
                         ),
                       ),
                     ],
