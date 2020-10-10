@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:awanahala/shared/sizeConfig.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserProfile extends StatefulWidget {
   @override
@@ -6,8 +10,12 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
+  File _image;
+
   @override
   Widget build(BuildContext context) {
+    
+
     return Scaffold(
       body: _body(),
     );
@@ -28,22 +36,52 @@ class _UserProfileState extends State<UserProfile> {
   }
 
   Widget _profilepic() {
+    SizeConfig().init(context);
+    double blockHeight = SizeConfig.safeBlockVertical;
+    double blockWidth = SizeConfig.safeBlockHorizontal;
+    
     return Padding(
       padding: EdgeInsets.only(top: 32),
-      child: CircleAvatar(
-        minRadius: 60,
+      child: GestureDetector(
+        onTap: (){
+          picker(context);
+        },
+          child: CircleAvatar(
+              radius: 55,
+              backgroundColor: Colors.yellow[200],
+              child: _image != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: Image.file(
+                        _image,
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    )
+                  : Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(50)),
+                      width: 100,
+                      height: 100,
+                      child: Icon(
+                        Icons.camera_alt,
+                        color: Colors.grey[800],
+                      ),
+                    ),
+            ),
       ),
     );
   }
 
-  Widget _divider(){
+  Widget _divider() {
     return Padding(
-      padding: EdgeInsets.only(top:10),
+      padding: EdgeInsets.only(top: 10),
       child: Container(
         height: 0.5,
         color: Colors.black,
       ),
-
     );
   }
 
@@ -156,7 +194,10 @@ class _UserProfileState extends State<UserProfile> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 16),
-                  child: Text("Fish Rolls",style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                  child: Text(
+                    "Fish Rolls",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 SizedBox(height: 16),
                 Row(
@@ -166,10 +207,59 @@ class _UserProfileState extends State<UserProfile> {
                     Text("Quantity : 4"),
                   ],
                 ),
-                
               ],
             )),
       ),
     );
+  }
+
+  void picker(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text('Photo Library'),
+                      onTap: () {
+                        _imgFromGallery();
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('Camera'),
+                    onTap: () {
+                      _imgFromCamera();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  void _imgFromCamera() async {
+    // ignore: deprecated_member_use
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.camera, imageQuality: 50);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
+  void _imgFromGallery() async {
+    // ignore: deprecated_member_use
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
+
+    setState(() {
+      _image = image;
+    });
   }
 }
