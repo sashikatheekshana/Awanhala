@@ -3,7 +3,7 @@
 
 import 'dart:convert';
 
-import 'package:awanahala/models/Item.dart';
+import 'package:awanahala/models/Items.dart';
 import 'package:http/http.dart';
 
 class HttpService{

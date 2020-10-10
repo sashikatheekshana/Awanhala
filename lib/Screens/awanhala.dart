@@ -26,7 +26,7 @@ class Awanhala extends StatelessWidget {
       child: GetMaterialApp(
         title: 'Awanahala',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/rateFood',
+        initialRoute: '/login',
 
         routes: {
           '/login': (context) => Login(),
