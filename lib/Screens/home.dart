@@ -1,5 +1,5 @@
 
-import 'package:awanahala/Screens/profile/profile.dart';
+import 'package:awanahala/Screens/profile.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -13,6 +13,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Cantime Home"),
+        backgroundColor: Colors.red[400],
       ),
       body: Center(
         child: RaisedButton(onPressed: (){

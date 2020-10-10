@@ -9,20 +9,24 @@ class FoodItemCategory extends StatefulWidget {
   _FoodItemCategoryState createState() => _FoodItemCategoryState();
 }
 
+//sashika
 class _FoodItemCategoryState extends State<FoodItemCategory> {
   String itemName;
-  List<String> items = List(); // Dummy list for Items
-  List<double> unitPrice = List(); // Dummy list for unit price of each items
+  List<String> items = List();
+  List<double> unitPrice = List();
 
   @override
   void initState() {
+    for (int i = 0; i < 7; i++) {
+      items.add("Item__" + (i + 1).toString());
+      unitPrice.add(i * 15.5);
+    }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    items.add("Egg Bun"); // dummy data
-    unitPrice.add(25.0); // dummy data
+
     return Container(
       padding: EdgeInsets.only(left: 10.0, right: 10.0),
       child: ListView.builder(
@@ -35,7 +39,6 @@ class _FoodItemCategoryState extends State<FoodItemCategory> {
       ),
     );
   }
- 
 
   buildListItem(String item, double unitPrice, String imageURL) {
     return Container(
@@ -66,7 +69,7 @@ class _FoodItemCategoryState extends State<FoodItemCategory> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      item, // **** ITEM NAME
+                      item,
                       style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w300,
@@ -85,7 +88,7 @@ class _FoodItemCategoryState extends State<FoodItemCategory> {
                             ),
                           ),
                           TextSpan(
-                            text: unitPrice.toString(), // **** UNIT PRICE
+                            text: unitPrice.toString(),
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20.0,
@@ -99,7 +102,6 @@ class _FoodItemCategoryState extends State<FoodItemCategory> {
                 ),
               ),
               Container(
-                // ***** This should be replace with precentage Icon or percontage widget
                 margin: EdgeInsets.only(right: 25.0),
                 child: Icon(
                   Icons.av_timer,

@@ -38,8 +38,10 @@ class _AddToCartState extends State<AddToCart> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Container(                 
-                    child: Container(                   
+                  Container(
+                    
+                    child: Container(
+                      
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
@@ -51,7 +53,7 @@ class _AddToCartState extends State<AddToCart> {
                         ],
                       ),
                       height: 60,
-                      padding: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+                      padding: EdgeInsets.only(top: 10.0, left: 10.0, right:10.0),
                       child: Column(
                         children: <Widget>[
                           Row(

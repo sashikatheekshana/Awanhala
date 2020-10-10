@@ -23,7 +23,8 @@ class _CartState extends State<Cart> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("My Cart"),
-          backgroundColor: Colors.red,
+
+          backgroundColor: Colors.red[400],
         ),
         body: Column(
           children: <Widget>[

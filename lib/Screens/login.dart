@@ -1,5 +1,7 @@
 import 'dart:convert';
-import 'package:awanahala/Screens/profile/profile.dart';
+import 'package:awanahala/Screens/profile.dart';
+import 'package:awanahala/service_locator/service_locator.dart';
+import 'package:awanahala/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -15,49 +17,14 @@ class _LoginState extends State<Login> {
   String email;
   String password;
   final _formKey = GlobalKey<FormState>();
+  AuthService authService = locator<AuthService>();
 
   loginFun() async {
     if (_formKey.currentState.validate()) {
-      // // _formKey.currentState.save();
-      // // print('the form is valid');
-      // // print(email);
-      // // print(password);
-      // // final body = jsonEncode({"email": email, "password": password});
+      _formKey.currentState.save();
 
-      // // var url = 'http://10.0.2.2:3000/api/user/login';
-      // // var response = await http.post(url,
-      // //     headers: <String, String>{
-      // //       'Content-Type': 'application/json; charset=UTF-8',
-      // //     },
-      // //     body: body);
-
-      // // // var jsonResponse = json.decode(response.body);
-      // // // print(jsonResponse);
-      // // print(response.body.runtimeType);
-
-      // // if (response.statusCode == 200) {
-      // //   print('user login successfull');
-
-      // //   Get.snackbar("Success", response.body,
-      // //       icon: Icon(
-      // //         Icons.done,
-      // //         color: Colors.green,
-      // //       ));
-
-      // //   // Future.delayed(Duration(seconds: 10));
-      //   Get.toNamed("/canteenSelect");
-      // } else {
-      //   print('login error');
-      //   Get.snackbar(
-      //     "Login error",
-      //     response.body,
-      //     icon: Icon(
-      //       Icons.error,
-      //       color: Colors.red,
-      //     ),
-      //   );
-      // }
-      Get.toNamed("/canteenSelect");
+      authService.signIn(email, password);
+      // _formKey.currentState.reset();
     } else {
       Get.snackbar(
         "Input error",
