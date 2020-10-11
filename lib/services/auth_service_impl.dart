@@ -13,7 +13,7 @@ class AuthServiceImpl extends AuthService {
     try {
       final body = jsonEncode({"email": email, "password": password});
 
-      var url = 'http://10.0.2.2:8080/api/user/login';
+      var url = 'http://3.223.72.19/api/user/login';
       var response = await http.post(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
@@ -78,7 +78,7 @@ class AuthServiceImpl extends AuthService {
         "nic": user.nic,
         "credits": 0,
       });
-      var url = 'http://10.0.2.2:8080/api/user/register';
+      var url = 'http://3.223.72.19/api/user/register';
 
       // var url = 'http://3.223.72.19/api/user/register';
       var response = await http.post(url,

@@ -17,6 +17,11 @@ class CanteenSelect extends StatefulWidget {
 class _CanteenSelectState extends State<CanteenSelect> {
   final UniversityService universityService = locator<UniversityService>();
 
+  List<University> universities = [
+    University(id: "0001", university: "University of Colombo"),
+    University(id: "0001", university: "University of Moratuwa")
+  ];
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -32,24 +37,12 @@ class _CanteenSelectState extends State<CanteenSelect> {
         drawer: Drawer(),
         body: Container(
           padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 20.0),
-          child: FutureBuilder(
-            future: universityService.getUniversities(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                List<University> universities = snapshot.data;
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (context, position) {
-                    return buildListItem(
-                        universities[position].university, "images/ucsc.jpg");
-                  },
-                );
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: universities.length,
+            itemBuilder: (context, position) {
+              return buildListItem(
+                  universities[position].university, "images/ucsc.jpg");
             },
           ),
         ),
