@@ -1,4 +1,3 @@
-
 import 'package:awanahala/Screens/profile.dart';
 import 'package:awanahala/bloc/SignUpBloc.dart';
 import 'package:awanahala/models/User.dart';
@@ -20,14 +19,12 @@ import 'ratethefood.dart';
 class Awanhala extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider<SignUpBloc>(
       create: (context) => SignUpBloc(User()),
       child: GetMaterialApp(
         title: 'Awanahala',
         debugShowCheckedModeBanner: false,
         initialRoute: '/login',
-
         routes: {
           '/login': (context) => Login(),
           '/sighUp': (context) => SignUp(),
@@ -40,10 +37,8 @@ class Awanhala extends StatelessWidget {
           '/cart': (context) => Cart(),
           '/scanQR': (context) => ScanQR(),
           '/profile': (context) => UserProfile(),
-
         },
       ),
     );
-
   }
 }
