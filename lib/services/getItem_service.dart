@@ -32,4 +32,34 @@ class HttpService {
 
     return allItems;
   }
+
+  Future<List<Item>> getAllItemsOfaGivencategory(int catId) async {
+    List<Item> allItems = [];
+
+    var response = await http.get(
+      itemurl + "/cat/" + catId.toString(),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    if (response.statusCode == 400) {
+      return allItems;
+    }
+
+    var jsonResponse = json.decode(response.body);
+
+    // print(jsonResponse);
+    List<dynamic> itemsList = jsonResponse['items'];
+    // print(itemsList);
+    itemsList.forEach((element) {
+      print(element);
+      Item item = Item.fromJson(element);
+
+      allItems.add(item);
+    });
+
+    print(allItems);
+
+    return allItems;
+  }
 }
