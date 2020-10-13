@@ -76,18 +76,18 @@ class AuthServiceImpl extends AuthService {
         "fullName": user.fullName,
         "phoneNumber": user.phoneNumber,
         "nic": user.nic,
-        "university": user.university,
-        "faculty": user.faculty
+        "credits": 0,
       });
-
       var url = 'http://3.223.72.19/api/user/register';
+
+      // var url = 'http://3.223.72.19/api/user/register';
       var response = await http.post(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
           body: body);
 
-      // var jsonResponse = json.decode(response.body);
+      var jsonResponse = json.decode(response.body);
       // // print(jsonResponse);
       // print(response.body.runtimeType);
 
@@ -110,7 +110,7 @@ class AuthServiceImpl extends AuthService {
         print('login error');
         Get.snackbar(
           "Login error",
-          response.body,
+          jsonResponse['message'],
           icon: Icon(
             Icons.error,
             color: Colors.red,
@@ -119,7 +119,7 @@ class AuthServiceImpl extends AuthService {
         );
       }
     } on SocketException catch (e) {
-      // print(e.message);
+      print(e.message);
       Get.snackbar(
         "Error occured",
         e.toString(),

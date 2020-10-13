@@ -8,15 +8,9 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
+  // ** dummy data for selected items [name, image url, item count, unit price, total price]
   final List<SelectedFood> selectedFoodList = [
     SelectedFood('Fish Bun', 'images/foods/fishBun.jpg', 2, 10, 20.0, 40.0),
-    SelectedFood('Bread', 'images/foods/bread.jpg', 1, 25, 50.0, 50.0),
-    // SelectedFood(
-    //     'Chicken Roll', 'images/foods/chickenRoll.jpg', 1, 24, 15.0, 15.0),
-    // SelectedFood('Hot Dog', 'images/foods/hotDog.jpg', 2, 45, 30.0, 60.0),
-    // SelectedFood('Wade', 'images/foods/wade.jpg', 4, 5, 10.0, 40.0),
-    // SelectedFood('Plain Tea', 'images/foods/plainTea.jpg', 2, 12, 5.0, 10.0),
-    // SelectedFood('Coffie', 'images/foods/coffie.jpg', 2, 2, 15.0, 30.0),
   ];
   double subTotal = 0;
 
@@ -29,6 +23,7 @@ class _CartState extends State<Cart> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("My Cart"),
+
           backgroundColor: Colors.red[400],
         ),
         body: Column(
@@ -63,7 +58,7 @@ class _CartState extends State<Cart> {
                           ),
                         ),
                         Text(
-                          "120.0",
+                          "120.0", // *** SUB total
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 25.0,
@@ -108,6 +103,8 @@ class _CartState extends State<Cart> {
     );
   }
 
+
+// show each items 
   Widget buildFoodList(BuildContext context, int index) {
     double blockHeight = SizeConfig.safeBlockVertical;
     double blockWidth = SizeConfig.safeBlockHorizontal;
@@ -140,7 +137,7 @@ class _CartState extends State<Cart> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  foodItem.name,
+                  foodItem.name, // ITEM NAME
                   style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w300),
                 ),
                 SizedBox(height: blockHeight * 1),
@@ -161,7 +158,9 @@ class _CartState extends State<Cart> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: blockWidth * 3, right: blockWidth * 3),
-                        child: Text(foodItem.qty.toString()),
+                        child: Text(
+                          foodItem.qty.toString(), // ITEM COUNT
+                        ),
                       ),
                       InkWell(
                         child: Icon(Icons.add),
@@ -195,7 +194,7 @@ class _CartState extends State<Cart> {
                   ),
                 ),
                 Text(
-                  foodItem.itemTotal.toString(),
+                  foodItem.itemTotal.toString(), // ITEM TOTAL
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 23.0,
